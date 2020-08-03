@@ -54,6 +54,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		3CDFD7B424D7B73B0015A2CC /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				844039AF24D7B1940073302F /* AppDelegate.swift */,
+				844039B124D7B1940073302F /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		844039A324D7B1940073302F = {
 			isa = PBXGroup;
 			children = (
@@ -73,8 +82,7 @@
 		844039AE24D7B1940073302F /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				844039AF24D7B1940073302F /* AppDelegate.swift */,
-				844039B124D7B1940073302F /* SceneDelegate.swift */,
+				3CDFD7B424D7B73B0015A2CC /* Delegates */,
 				3CDFD7B224D7B5390015A2CC /* Controllers */,
 				3CDFD7B324D7B6D40015A2CC /* Storyboards */,
 				844039B824D7B1970073302F /* Assets.xcassets */,
