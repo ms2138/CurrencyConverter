@@ -8,5 +8,7 @@
 
 import Foundation
 
-struct CurrencyConversion {
+struct CurrencyConversion: Codable {
+    var from: Currency
+    var to: Currency
 }
