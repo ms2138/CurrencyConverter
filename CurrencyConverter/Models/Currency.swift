@@ -8,8 +8,12 @@
 
 import Foundation
 
-struct Currency {
+struct Currency: Codable, Equatable {
     var name: String
     var symbol: String?
     var id: String
+
+    static func == (lhs: Currency, rhs: Currency) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
