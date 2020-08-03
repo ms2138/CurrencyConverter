@@ -9,4 +9,5 @@
 import Foundation
 
 struct ExchangeRate {
+    var rate: Double
 }
