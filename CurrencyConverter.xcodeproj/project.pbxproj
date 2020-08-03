@@ -45,6 +45,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		3CDFD7B324D7B6D40015A2CC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				844039BA24D7B1970073302F /* LaunchScreen.storyboard */,
+				844039B524D7B1940073302F /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		844039A324D7B1940073302F = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +76,8 @@
 				844039AF24D7B1940073302F /* AppDelegate.swift */,
 				844039B124D7B1940073302F /* SceneDelegate.swift */,
 				3CDFD7B224D7B5390015A2CC /* Controllers */,
-				844039B524D7B1940073302F /* Main.storyboard */,
+				3CDFD7B324D7B6D40015A2CC /* Storyboards */,
 				844039B824D7B1970073302F /* Assets.xcassets */,
-				844039BA24D7B1970073302F /* LaunchScreen.storyboard */,
 				844039BD24D7B1970073302F /* Info.plist */,
 			);
 			path = CurrencyConverter;
