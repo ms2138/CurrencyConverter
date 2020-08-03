@@ -9,4 +9,7 @@
 import Foundation
 
 struct Currency {
+    var name: String
+    var symbol: String?
+    var id: String
 }
