@@ -11,6 +11,9 @@ import UIKit
 class ConvertCurrencyViewController: UIViewController {
     @IBOutlet weak var outputDisplayLabel: UILabel!
     @IBOutlet weak var exchangeRateDisplayLabel: UILabel!
+    @IBOutlet weak var convertFromButton: UIButton!
+    @IBOutlet weak var convertToButton: UIButton!
+    @IBOutlet weak var switchConversionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

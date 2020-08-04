@@ -98,8 +98,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="convertFromButton" destination="VFW-P8-JVB" id="Zyi-mF-UBJ"/>
+                        <outlet property="convertToButton" destination="SCc-ZB-36K" id="qs3-Nm-QH7"/>
                         <outlet property="exchangeRateDisplayLabel" destination="bgK-v7-w05" id="oXK-7Q-C2p"/>
                         <outlet property="outputDisplayLabel" destination="0Yp-lq-xua" id="lmW-dE-bQf"/>
+                        <outlet property="switchConversionButton" destination="Rf3-MD-0Lj" id="aHw-9i-rnn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
