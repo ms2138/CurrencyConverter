@@ -27,4 +27,9 @@ class CustomButton: UIButton {
             layer.borderWidth = borderWidth
         }
     }
+    @IBInspectable var borderColor: UIColor? {
+        didSet {
+            layer.borderColor = borderColor?.cgColor
+        }
+    }
 }
