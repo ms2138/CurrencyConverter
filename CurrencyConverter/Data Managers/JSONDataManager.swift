@@ -21,4 +21,11 @@ class JSONDataManager<T: Codable> {
         let decodedData = try decoder.decode(T.self, from: savedData)
         return decodedData
     }
+
+    func read(from path: URL) throws -> [T] {
+        let decoder = JSONDecoder()
+        let savedData = try Data(contentsOf: path)
+        let decodedData = try decoder.decode([T].self, from: savedData)
+        return decodedData
+    }
 }
