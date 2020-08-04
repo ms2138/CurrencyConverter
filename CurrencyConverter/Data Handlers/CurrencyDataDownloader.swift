@@ -45,4 +45,28 @@ extension CurrencyDataDownloader {
         }
         dataTask.resume()
     }
+
+    func getExchangeRate(for converter: CurrencyConversion, completion: @escaping (ExchangeRate?, URLResponse?, Error?) -> Void) {
+        let queryItems = [URLQueryItem(name: "q", value: "\(converter.from.id)_\(converter.to.id)"),
+                          URLQueryItem(name: "compact", value: "ultra")]
+        guard let url = createURL(path: "convert", queryItems: queryItems) else { return }
+        var exchangeRate: ExchangeRate?
+
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data, let response = response as? HTTPURLResponse,
+                response.statusCode == 200 {
+                do {
+                    let decoder = JSONDecoder()
+                    exchangeRate = try decoder.decode(ExchangeRate.self, from: data)
+
+                } catch {
+                    debugLog("Failed to get exchange rate data.")
+                }
+            }
+            DispatchQueue.main.async {
+                completion(exchangeRate, response, error)
+            }
+        }
+        dataTask.resume()
+    }
 }
