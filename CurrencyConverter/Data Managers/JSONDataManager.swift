@@ -9,4 +9,9 @@
 import Foundation
 
 class JSONDataManager<T: Codable> {
+    func write(data: T, to path: URL) throws {
+        let encoder = JSONEncoder()
+        let encodedFeeds = try encoder.encode(data)
+        try encodedFeeds.write(to: path, options: .atomic)
+    }
 }
