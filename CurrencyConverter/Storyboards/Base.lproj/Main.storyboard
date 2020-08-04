@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRJ-Fg-1qZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="130"/>
+                                <rect key="frame" x="20" y="44" width="374" height="130"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="bgK-v7-w05" customClass="CustomLabel" customModule="CurrencyConverter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14.5" width="414" height="101.5"/>
+                                        <rect key="frame" x="0.0" y="14.5" width="374" height="101.5"/>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="85"/>
                                         <color key="textColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-lq-xua" customClass="CustomLabel" customModule="CurrencyConverter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14.5" width="414" height="101.5"/>
+                                        <rect key="frame" x="0.0" y="14.5" width="374" height="101.5"/>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="85"/>
@@ -49,10 +49,38 @@
                                 <rect key="frame" x="0.0" y="174" width="414" height="688"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-eY-fWB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="638.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="688"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFW-P8-JVB" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="From">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                </variation>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf3-MD-0Lj">
+                                                <rect key="frame" x="0.0" y="232" width="414" height="224"/>
+                                                <state key="normal" image="Up_Down_Arrow">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCc-ZB-36K" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="464" width="414" height="224"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="To">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                </variation>
+                                            </button>
+                                        </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sm8-h8-2DZ">
-                                        <rect key="frame" x="0.0" y="646.5" width="414" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="688" width="414" height="0.0"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -62,8 +90,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gzA-UX-LIM" secondAttribute="trailing" id="3qw-3w-pcd"/>
                             <constraint firstItem="gzA-UX-LIM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7uD-7c-Exd"/>
                             <constraint firstItem="FRJ-Fg-1qZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DWB-xh-pyF"/>
-                            <constraint firstItem="FRJ-Fg-1qZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Lo0-FC-N3x"/>
-                            <constraint firstItem="FRJ-Fg-1qZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R9D-bF-cGy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FRJ-Fg-1qZ" secondAttribute="trailing" constant="20" id="Lo0-FC-N3x"/>
+                            <constraint firstItem="FRJ-Fg-1qZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="R9D-bF-cGy"/>
                             <constraint firstItem="gzA-UX-LIM" firstAttribute="top" secondItem="FRJ-Fg-1qZ" secondAttribute="bottom" id="UMl-sC-CLN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gzA-UX-LIM" secondAttribute="bottom" id="hf1-C8-xg3"/>
                         </constraints>
@@ -79,4 +107,7 @@
             <point key="canvasLocation" x="141" y="169"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Up_Down_Arrow" width="40" height="40"/>
+    </resources>
 </document>
