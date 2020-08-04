@@ -9,7 +9,9 @@
 import UIKit
 
 class ConvertCurrencyViewController: UIViewController {
-
+    @IBOutlet weak var outputDisplayLabel: UILabel!
+    @IBOutlet weak var exchangeRateDisplayLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -49,10 +49,10 @@
                                 <rect key="frame" x="0.0" y="174" width="414" height="688"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-eY-fWB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="646.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="638.5"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sm8-h8-2DZ">
-                                        <rect key="frame" x="0.0" y="654.5" width="414" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="646.5" width="414" height="41.5"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -69,6 +69,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="exchangeRateDisplayLabel" destination="bgK-v7-w05" id="oXK-7Q-C2p"/>
+                        <outlet property="outputDisplayLabel" destination="0Yp-lq-xua" id="lmW-dE-bQf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
