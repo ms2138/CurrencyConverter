@@ -21,3 +21,28 @@ class CurrencyDataDownloader {
         return components.url
     }
 }
+
+extension CurrencyDataDownloader {
+    func getCurrencyData(completion: @escaping ([Currency]?, URLResponse?, Error?) -> ()) {
+        guard let url = createURL(path: "currencies") else { return }
+        var currencies: [Currency]?
+
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data, let response = response as? HTTPURLResponse,
+                response.statusCode == 200 {
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(CurrencyList.self, from: data)
+                    currencies = result.currencies
+
+                } catch {
+                    debugLog("Failed to get currency data.")
+                }
+            }
+            DispatchQueue.main.async {
+                completion(currencies, response, error)
+            }
+        }
+        dataTask.resume()
+    }
+}
