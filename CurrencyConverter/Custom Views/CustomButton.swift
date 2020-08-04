@@ -10,4 +10,10 @@ import UIKit
 
 @IBDesignable
 class CustomButton: UIButton {
+    @IBInspectable var normalBackgroundColor: UIColor? {
+        willSet {
+            backgroundColor = newValue
+        }
+    }
+    @IBInspectable var highlightedBackgroundColor: UIColor?
 }
