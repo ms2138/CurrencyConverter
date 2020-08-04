@@ -14,6 +14,7 @@ class ConvertCurrencyViewController: UIViewController {
     @IBOutlet weak var convertFromButton: UIButton!
     @IBOutlet weak var convertToButton: UIButton!
     @IBOutlet weak var switchConversionButton: UIButton!
+    @IBOutlet weak var convertButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
