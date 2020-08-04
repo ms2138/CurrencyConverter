@@ -32,4 +32,10 @@ class CustomButton: UIButton {
             layer.borderColor = borderColor?.cgColor
         }
     }
+
+    override open var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? highlightedBackgroundColor : normalBackgroundColor
+        }
+    }
 }
