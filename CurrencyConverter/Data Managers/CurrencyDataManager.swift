@@ -35,4 +35,15 @@ extension CurrencyDataManager {
             debugLog("Failed to write currency data")
         }
     }
+
+    func downloadCurrencies(completion: (() -> Void)? = nil) {
+        let currencyDownloader = CurrencyDataDownloader.init()
+        currencyDownloader.getCurrencyData { [weak self] (currencies, response, error) in
+            guard let weakSelf = self else { return }
+            if let currencies = currencies {
+                weakSelf.currencies.append(contentsOf: currencies)
+                completion?()
+            }
+        }
+    }
 }
