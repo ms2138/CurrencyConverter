@@ -16,6 +16,7 @@
 		3CDFD7C224D92ABC0015A2CC /* CurrencyDataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7C124D92ABC0015A2CC /* CurrencyDataDownloader.swift */; };
 		3CDFD7C524D92F790015A2CC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7C424D92F790015A2CC /* Helpers.swift */; };
 		3CDFD7C824D931B20015A2CC /* JSONDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7C724D931B20015A2CC /* JSONDataManager.swift */; };
+		3CDFD7CB24DA6CE00015A2CC /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7CA24DA6CE00015A2CC /* CustomLabel.swift */; };
 		844039B024D7B1940073302F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844039AF24D7B1940073302F /* AppDelegate.swift */; };
 		844039B224D7B1940073302F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844039B124D7B1940073302F /* SceneDelegate.swift */; };
 		844039B724D7B1940073302F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844039B524D7B1940073302F /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		3CDFD7C124D92ABC0015A2CC /* CurrencyDataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataDownloader.swift; sourceTree = "<group>"; };
 		3CDFD7C424D92F790015A2CC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		3CDFD7C724D931B20015A2CC /* JSONDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataManager.swift; sourceTree = "<group>"; };
+		3CDFD7CA24DA6CE00015A2CC /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		844039AC24D7B1940073302F /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844039AF24D7B1940073302F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844039B124D7B1940073302F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				3CDFD7BE24D91DA90015A2CC /* CustomButton.swift */,
+				3CDFD7CA24DA6CE00015A2CC /* CustomLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				844039B224D7B1940073302F /* SceneDelegate.swift in Sources */,
 				3CDFD7BF24D91DA90015A2CC /* CustomButton.swift in Sources */,
 				3CDFD7B924D7B7E70015A2CC /* CurrencyList.swift in Sources */,
+				3CDFD7CB24DA6CE00015A2CC /* CustomLabel.swift in Sources */,
 				3CDFD7BB24D7C2090015A2CC /* ExchangeRate.swift in Sources */,
 				3CDFD7B124D7B52F0015A2CC /* ConvertCurrencyViewController.swift in Sources */,
 				3CDFD7C824D931B20015A2CC /* JSONDataManager.swift in Sources */,
