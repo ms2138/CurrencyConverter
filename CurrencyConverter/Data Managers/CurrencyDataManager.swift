@@ -9,4 +9,9 @@
 import Foundation
 
 class CurrencyDataManager {
+    var currencies: [Currency]
+
+    init() {
+        self.currencies = [Currency]()
+    }
 }
