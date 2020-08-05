@@ -9,4 +9,7 @@
 import UIKit
 
 class CustomLabel: UILabel {
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
 }
