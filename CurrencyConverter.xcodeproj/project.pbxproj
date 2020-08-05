@@ -127,6 +127,14 @@
 			path = "Data Managers";
 			sourceTree = "<group>";
 		};
+		3CDFD7CE24DA73F80015A2CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3CDFD7CC24DA73930015A2CC /* FileManager+EXT.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		844039A324D7B1940073302F = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +154,7 @@
 		844039AE24D7B1940073302F /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				3CDFD7CC24DA73930015A2CC /* FileManager+EXT.swift */,
+				3CDFD7CE24DA73F80015A2CC /* Extensions */,
 				3CDFD7C924D931BF0015A2CC /* Data Managers */,
 				3CDFD7C624D92FB40015A2CC /* Helpers */,
 				3CDFD7C324D92AD20015A2CC /* Data Handlers */,
