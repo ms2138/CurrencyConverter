@@ -10,6 +10,9 @@ import Foundation
 
 class CurrencyDataManager {
     var currencies: [Currency]
+    var pathToSavedCurrencies: URL {
+        return FileManager.default.pathToFile(filename: "currencies.json")
+    }
 
     init() {
         self.currencies = [Currency]()
