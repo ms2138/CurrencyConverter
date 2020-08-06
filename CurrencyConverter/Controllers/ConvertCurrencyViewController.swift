@@ -59,6 +59,42 @@ class ConvertCurrencyViewController: UIViewController {
 }
 
 extension ConvertCurrencyViewController {
+    // MARK: - Exchange/Currency methods
+
+    private func flushExchangeRateCache(after seconds: TimeInterval) {
+        let appDefaults = AppDefaults.init()
+        if let timeStamp = appDefaults.exchangeRateCacheTimestamp {
+            if (Date().timeIntervalSince(timeStamp) >= seconds) {
+                exchangeRateCache.removeAll()
+                appDefaults.exchangeRateCacheTimestamp = Date()
+            }
+        } else {
+            appDefaults.exchangeRateCacheTimestamp = Date()
+        }
+    }
+
+    private func updateCurrencies(after seconds: TimeInterval) {
+        do {
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: currencyDataManager.pathToSavedCurrencies.path) as NSDictionary
+            if let creationDate = fileAttributes.fileCreationDate() {
+                if (Date().timeIntervalSince(creationDate) >= seconds) {
+                    currencyDataManager.downloadCurrencies {
+                        [unowned self] in
+                        if (self.currencyDataManager.currencies.count > 0) {
+                            self.currencyDataManager.saveCurrencies()
+                        }
+                    }
+                } else {
+                    debugLog("Time interval not met.  Currency update will not proceed.")
+                }
+            }
+        } catch {
+            debugLog("Failed to update currencies")
+        }
+    }
+}
+
+extension ConvertCurrencyViewController {
     // MARK: - Currency conversion methods
 
     func performConversion(using rate: Double, amount: Double) -> Double {
