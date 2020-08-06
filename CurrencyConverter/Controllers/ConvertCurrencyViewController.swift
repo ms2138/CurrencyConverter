@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConvertCurrencyViewController: UIViewController {
+class ConvertCurrencyViewController: UIViewController, AlertPresentable {
     @IBOutlet weak var outputDisplayLabel: UILabel!
     @IBOutlet weak var exchangeRateDisplayLabel: UILabel!
     @IBOutlet weak var convertFromButton: UIButton!
@@ -62,7 +62,7 @@ extension ConvertCurrencyViewController {
     // MARK: - Exchange/Currency methods
 
     private func flushExchangeRateCache(after seconds: TimeInterval) {
-        let appDefaults = AppDefaults.init()
+        let appDefaults = AppDefaults()
         if let timeStamp = appDefaults.exchangeRateCacheTimestamp {
             if (Date().timeIntervalSince(timeStamp) >= seconds) {
                 exchangeRateCache.removeAll()
@@ -97,8 +97,47 @@ extension ConvertCurrencyViewController {
 extension ConvertCurrencyViewController {
     // MARK: - Currency conversion methods
 
+    func convertCurrency() {
+        let convertAndDisplayTotal = { [unowned self] (rate: Double, amount: Double) in
+            self.total = self.performConversion(using: rate, amount: amount)
+            self.enteredAmount = self.roundedTotal
+            debugLog("The total converted amount is: \(self.total)")
+        }
+
+        if let amount = Double(enteredAmount), amount != 0.0 {
+            if let exchange = exchangeRate {
+                convertAndDisplayTotal(exchange, amount)
+            } else {
+                convertButton.isUserInteractionEnabled = false
+                flushExchangeRateCache(after: 3600)
+                let currencyDownloader = CurrencyDataDownloader.init()
+                currencyDownloader.getExchangeRate(for: currencyConversion) { [unowned self] (exchange, response, error) in
+                    defer { self.convertButton.isUserInteractionEnabled = true }
+                    if let exchange = exchange {
+                        let rate = exchange.rate
+                        self.exchangeRateCache[self.conversionID] = rate
+                        convertAndDisplayTotal(rate, amount)
+                    } else {
+                        // If the data request fails, get last saved exchange rate for the given conversionId
+                        if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
+                            debugLog("Converting currency using exchange rate cache")
+                            convertAndDisplayTotal(exchange, amount)
+                        } else {
+                            self.presentAlert(title: "Error",
+                                              message: "Failed to perform conversion")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     func performConversion(using rate: Double, amount: Double) -> Double {
         return rate * amount
+    }
+
+    @IBAction func convert(sender: UIButton) {
+        convertCurrency()
     }
 }
 
