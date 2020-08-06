@@ -15,6 +15,17 @@ class ConvertCurrencyViewController: UIViewController {
     @IBOutlet weak var convertToButton: UIButton!
     @IBOutlet weak var switchConversionButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
+    var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
+    var total = 0.0
+    var enteredAmount: String = "" {
+        willSet {
+            if (newValue.count != 0) {
+                outputDisplayLabel.text = newValue
+            } else {
+                outputDisplayLabel.text = "0"
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
