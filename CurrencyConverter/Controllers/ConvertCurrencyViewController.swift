@@ -16,6 +16,7 @@ class ConvertCurrencyViewController: UIViewController {
     @IBOutlet weak var switchConversionButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
     var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
+    fileprivate var exchangeRateCache = [String: Double]()
     var total = 0.0
     var enteredAmount: String = "" {
         willSet {
@@ -38,6 +39,12 @@ class ConvertCurrencyViewController: UIViewController {
     private(set) lazy var setConversionButtonsTitle = { [unowned self] (conversion: CurrencyConversion) in
         self.convertFromButton.setTitle(conversion.from.name, for: .normal)
         self.convertToButton.setTitle(conversion.to.name, for: .normal)
+    }
+    fileprivate var conversionID: String {
+        return "\(currencyConversion.from.id)_\(currencyConversion.to.id)"
+    }
+    var exchangeRate: Double? {
+        return exchangeRateCache[conversionID]
     }
     var isExchangeRateDisplayed: Bool {
         return outputDisplayLabel.isHidden == true
