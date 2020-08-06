@@ -61,3 +61,33 @@ extension ConvertCurrencyViewController {
         clearAll()
     }
 }
+
+extension ConvertCurrencyViewController {
+    // MARK: - Number keypad methods
+    
+    @IBAction func numberKeypadTouched(sender: UIButton) {
+        guard let text = sender.title(for: .selected) else {
+            return
+        }
+
+        if (total != 0.0) { clearAll() }
+
+        if (enteredAmount.count >= 13) {
+            return
+        }
+
+        if (enteredAmount.count == 0) {
+            if (text == "0" || text == ".") {
+                return
+            }
+        }
+
+        if (text == ".") {
+            if (enteredAmount.contains(".") == true) {
+                return
+            }
+        }
+
+        enteredAmount.append(text)
+    }
+}
