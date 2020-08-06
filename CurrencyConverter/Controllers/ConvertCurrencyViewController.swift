@@ -43,3 +43,21 @@ extension ConvertCurrencyViewController {
     }
 }
 
+extension ConvertCurrencyViewController {
+    // MARK: - Clear/Reset methods
+
+    func clearAll() {
+        if (enteredAmount.count != 0) {
+            enteredAmount.removeAll()
+            total = 0.0
+        }
+
+        if (isExchangeRateDisplayed == true) {
+            outputDisplayLabel.isHidden = !isExchangeRateDisplayed
+        }
+    }
+
+    @IBAction func clearButtonTouched(sender: UIButton) {
+        clearAll()
+    }
+}
