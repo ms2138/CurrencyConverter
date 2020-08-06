@@ -18,6 +18,9 @@ class ConvertCurrencyViewController: UIViewController {
     var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
     fileprivate var exchangeRateCache = [String: Double]()
     var total = 0.0
+    var roundedTotal: String {
+        return String(format: "%.5f", total)
+    }
     var enteredAmount: String = "" {
         willSet {
             if (newValue.count != 0) {
