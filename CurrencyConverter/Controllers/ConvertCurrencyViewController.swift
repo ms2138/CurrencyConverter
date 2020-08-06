@@ -26,8 +26,20 @@ class ConvertCurrencyViewController: UIViewController {
             }
         }
     }
+    var isExchangeRateDisplayed: Bool {
+        return outputDisplayLabel.isHidden == true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
+
+extension ConvertCurrencyViewController {
+    // MARK: - Currency conversion methods
+
+    func performConversion(using rate: Double, amount: Double) -> Double {
+        return rate * amount
+    }
+}
+
