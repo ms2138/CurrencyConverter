@@ -26,6 +26,19 @@ class ConvertCurrencyViewController: UIViewController {
             }
         }
     }
+    var currencyConversion: CurrencyConversion = {
+        let fromCurrency = Currency.init(name: "United States Dollar", symbol: "$", id: "USD")
+        let toCurrency = Currency.init(name: "Canadian Dollar", symbol: "$", id: "CAD")
+        return CurrencyConversion.init(from: fromCurrency, to: toCurrency)
+        }() {
+        willSet {
+            setConversionButtonsTitle(newValue)
+        }
+    }
+    private(set) lazy var setConversionButtonsTitle = { [unowned self] (conversion: CurrencyConversion) in
+        self.convertFromButton.setTitle(conversion.from.name, for: .normal)
+        self.convertToButton.setTitle(conversion.to.name, for: .normal)
+    }
     var isExchangeRateDisplayed: Bool {
         return outputDisplayLabel.isHidden == true
     }
