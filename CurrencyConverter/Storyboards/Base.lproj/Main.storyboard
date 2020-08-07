@@ -33,6 +33,10 @@
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="85"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="EZO-9s-vKs" appends="YES" id="JyT-Ba-Jkg"/>
+                                            <outletCollection property="gestureRecognizers" destination="Ee5-dl-DrU" appends="YES" id="QbV-SM-jZp"/>
+                                        </connections>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -447,6 +451,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="EZO-9s-vKs">
+                    <connections>
+                        <action selector="handleSwipeWithRecognizer:" destination="BYZ-38-t0r" id="VI0-je-zRd"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Ee5-dl-DrU">
+                    <connections>
+                        <action selector="handleSwipeWithRecognizer:" destination="BYZ-38-t0r" id="VYs-qU-nQv"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141" y="169"/>
         </scene>

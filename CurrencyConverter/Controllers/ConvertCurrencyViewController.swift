@@ -161,6 +161,16 @@ extension ConvertCurrencyViewController {
 }
 
 extension ConvertCurrencyViewController {
+    // MARK: - Gesture methods
+    
+    @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
+        if (enteredAmount.count != 0 && total == 0.0) {
+            enteredAmount.removeLast()
+        }
+    }
+}
+
+extension ConvertCurrencyViewController {
     // MARK: - Keypad methods
     
     @IBAction func numberKeypadTouched(sender: UIButton) {
