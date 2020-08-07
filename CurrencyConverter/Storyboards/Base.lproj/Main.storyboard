@@ -411,6 +411,9 @@
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="55"/>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="convertWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Xi-Oc-seU"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
