@@ -168,6 +168,13 @@ extension ConvertCurrencyViewController {
             enteredAmount.removeLast()
         }
     }
+
+    @IBAction func handleDoubleTap(recognizer: UITapGestureRecognizer) {
+        if let rate = exchangeRate {
+            exchangeRateDisplayLabel.text = String(rate)
+            outputDisplayLabel.isHidden = !isExchangeRateDisplayed
+        }
+    }
 }
 
 extension ConvertCurrencyViewController {

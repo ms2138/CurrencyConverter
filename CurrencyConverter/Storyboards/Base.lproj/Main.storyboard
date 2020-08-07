@@ -25,6 +25,9 @@
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="85"/>
                                         <color key="textColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Liu-y6-Vj4" appends="YES" id="Uig-xh-mDJ"/>
+                                        </connections>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-lq-xua" customClass="CustomLabel" customModule="CurrencyConverter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14.5" width="374" height="101.5"/>
@@ -36,6 +39,7 @@
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="EZO-9s-vKs" appends="YES" id="JyT-Ba-Jkg"/>
                                             <outletCollection property="gestureRecognizers" destination="Ee5-dl-DrU" appends="YES" id="QbV-SM-jZp"/>
+                                            <outletCollection property="gestureRecognizers" destination="UI2-h4-Z4y" appends="YES" id="M8a-jN-Nwb"/>
                                         </connections>
                                     </label>
                                 </subviews>
@@ -461,6 +465,16 @@
                         <action selector="handleSwipeWithRecognizer:" destination="BYZ-38-t0r" id="VYs-qU-nQv"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="UI2-h4-Z4y">
+                    <connections>
+                        <action selector="handleDoubleTapWithRecognizer:" destination="BYZ-38-t0r" id="mF9-of-j44"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Liu-y6-Vj4">
+                    <connections>
+                        <action selector="handleDoubleTapWithRecognizer:" destination="BYZ-38-t0r" id="EbX-4Z-Wz6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141" y="169"/>
         </scene>
