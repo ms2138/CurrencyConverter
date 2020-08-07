@@ -161,7 +161,7 @@ extension ConvertCurrencyViewController {
 }
 
 extension ConvertCurrencyViewController {
-    // MARK: - Number keypad methods
+    // MARK: - Keypad methods
     
     @IBAction func numberKeypadTouched(sender: UIButton) {
         guard let text = sender.title(for: .selected) else {
@@ -187,5 +187,30 @@ extension ConvertCurrencyViewController {
         }
 
         enteredAmount.append(text)
+    }
+
+    @IBAction func switchConversionDirection(sender: UIButton) {
+        switchConversionButton.isUserInteractionEnabled = false
+        if (total != 0.0) {
+            enteredAmount = roundedTotal
+        }
+
+        let toCurrency = currencyConversion.to
+        currencyConversion.to = currencyConversion.from
+        currencyConversion.from = toCurrency
+
+        UIView.animate(withDuration: 0.2, animations: {
+            self.convertFromButton.alpha = 0.0
+            self.convertToButton.alpha = 0.0
+        }) { (finished) in
+            self.setConversionButtonsTitle(self.currencyConversion)
+
+            UIView.animate(withDuration: 0.2, animations: {
+                self.convertFromButton.alpha = 1.0
+                self.convertToButton.alpha = 1.0
+            }) { (finished) in
+                self.switchConversionButton.isUserInteractionEnabled = true
+            }
+        }
     }
 }
