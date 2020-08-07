@@ -10,6 +10,7 @@ import UIKit
 
 class CurrencySelectorViewController: UIViewController {
     @IBOutlet weak var fromCurrencyTableView: UITableView!
+    @IBOutlet weak var toCurrencyTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
