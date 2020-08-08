@@ -24,4 +24,40 @@ class CurrencySelectorViewController: UIViewController {
     }
 }
 
+extension CurrencySelectorViewController: UITableViewDataSource {
+    // MARK: - Table view data source
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currencyDataManager.currencies.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath)
+
+        let tableViewIndex = (tableView == fromCurrencyTableView) ? 0 : 1
+        let key = sectionTitles[tableViewIndex]
+
+        let currency = currencyDataManager.currencies[indexPath.row]
+        cell.textLabel?.text = currency.name
+        cell.accessoryType = .none
+        cell.enable(true)
+
+        if let selectedCurrencyIndexPath = selectedCurrencies[key] {
+            if (selectedCurrencyIndexPath == indexPath) {
+                cell.accessoryType = .checkmark
+            }
+        }
+
+        if let disabledCurrencyIndexPath = disabledCurrencies[tableView] {
+            if (disabledCurrencyIndexPath == indexPath) {
+                cell.enable(false)
+            }
+        }
+
+        return cell
+    }
+}
 
