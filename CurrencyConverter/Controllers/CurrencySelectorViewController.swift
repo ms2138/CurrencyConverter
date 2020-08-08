@@ -13,13 +13,15 @@ class CurrencySelectorViewController: UIViewController {
     @IBOutlet weak var toCurrencyTableView: UITableView!
     var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
     var previousConversion: CurrencyConversion?
+    fileprivate var sectionTitles = ["From", "To"]
+    fileprivate var selectedCurrencies = [String: IndexPath]()
+    fileprivate var disabledCurrencies = [UITableView: IndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         currencyDataManager.readCurrencies()
     }
-
-
 }
+
 
