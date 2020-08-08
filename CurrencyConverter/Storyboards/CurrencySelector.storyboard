@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g1k-kC-KSf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g85-Ph-8jY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ca5-Dx-W8K">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -49,7 +49,7 @@
                                         </connections>
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OE2-bz-dI7">
-                                        <rect key="frame" x="0.0" y="409" width="414" height="409"/>
+                                        <rect key="frame" x="0.0" y="387" width="414" height="387"/>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -90,6 +90,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8CD-DY-m8w"/>
                     </view>
+                    <navigationItem key="navigationItem" id="m0e-F4-0wv"/>
                     <connections>
                         <outlet property="fromCurrencyTableView" destination="Ca5-Dx-W8K" id="GgJ-4i-TTW"/>
                         <outlet property="toCurrencyTableView" destination="OE2-bz-dI7" id="GP9-XE-6Sh"/>
@@ -97,7 +98,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0j-gb-qgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="146"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="145.98214285714286"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fyz-h6-yZc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g1k-kC-KSf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xKb-DT-m9K">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="79y-kp-2iQ" kind="relationship" relationship="rootViewController" id="c2Y-b6-hsk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="or3-Bd-g5S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="145.98214285714286"/>
         </scene>
     </scenes>
 </document>
