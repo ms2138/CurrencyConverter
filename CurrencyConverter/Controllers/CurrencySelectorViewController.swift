@@ -25,6 +25,8 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable {
 }
 
 extension CurrencySelectorViewController {
+    // MARK: - Currency setup method
+
     fileprivate func loadCurrencies() {
         if (currencyDataManager.savedFileExists == false) {
             currencyDataManager.downloadCurrencies {
@@ -46,8 +48,36 @@ extension CurrencySelectorViewController {
     }
 }
 
+extension CurrencySelectorViewController {
+    // MARK: - Cell configuration methods
+
+    fileprivate func toggleCellUserInteraction(in tableView: UITableView, at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        cell.isUserInteractionEnabled = (cell.isUserInteractionEnabled == true) ? false : true
+        cell.textLabel?.alpha = (cell.textLabel?.alpha == 1.0) ? 0.5 : 1.0
+    }
+
+    fileprivate func toggleCellCheckMark(for cell: UITableViewCell) {
+        if (cell.accessoryType != UITableViewCell.AccessoryType.checkmark) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+    }
+
+    fileprivate func checkIfCellHasCheckMark(in tableView: UITableView, indexPath: IndexPath) -> Bool {
+        if let cell = fromCurrencyTableView.cellForRow(at: indexPath), cell.accessoryType == .checkmark {
+            return true
+        }
+        return false
+    }
+}
+
 extension CurrencySelectorViewController: UITableViewDataSource {
     // MARK: - Table view data source
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
