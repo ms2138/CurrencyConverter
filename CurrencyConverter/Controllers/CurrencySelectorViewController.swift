@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencySelectorViewController: UIViewController {
+class CurrencySelectorViewController: UIViewController, AlertPresentable {
     @IBOutlet weak var fromCurrencyTableView: UITableView!
     @IBOutlet weak var toCurrencyTableView: UITableView!
     var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
@@ -20,7 +20,29 @@ class CurrencySelectorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        currencyDataManager.readCurrencies()
+        loadCurrencies()
+    }
+}
+
+extension CurrencySelectorViewController {
+    fileprivate func loadCurrencies() {
+        if (currencyDataManager.savedFileExists == false) {
+            currencyDataManager.downloadCurrencies {
+                [weak self] in
+                guard let weakSelf = self else { return }
+                if (weakSelf.currencyDataManager.currencies.count > 0) {
+                    weakSelf.currencyDataManager.currencies.sort { $0.name < $1.name }
+                    weakSelf.currencyDataManager.saveCurrencies()
+                    weakSelf.toCurrencyTableView.reloadData()
+                    weakSelf.toCurrencyTableView.reloadData()
+                } else {
+                    weakSelf.presentAlert(title: "Error",
+                                          message: "Failed to load currencies")
+                }
+            }
+        } else {
+            currencyDataManager.readCurrencies()
+        }
     }
 }
 
