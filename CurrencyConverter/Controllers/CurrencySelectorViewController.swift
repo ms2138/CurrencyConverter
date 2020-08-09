@@ -16,7 +16,8 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable {
     fileprivate var sectionTitles = ["From", "To"]
     fileprivate var selectedCurrencies = [String: IndexPath]()
     fileprivate var disabledCurrencies = [UITableView: IndexPath]()
-    
+    var handler: ((CurrencyConversion) -> ())?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -121,3 +122,25 @@ extension CurrencySelectorViewController: UITableViewDataSource {
     }
 }
 
+extension CurrencySelectorViewController {
+    // MARK: - IBAction methods
+
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+
+    @IBAction func done(sender: UIBarButtonItem) {
+        let fromCurrencyKey = sectionTitles[0]
+        let toCurrencyKey = sectionTitles[1]
+        if let fromCurrencyIndexPath = selectedCurrencies[fromCurrencyKey], let toCurrencyIndexPath = selectedCurrencies[toCurrencyKey] {
+            let fromCurrency = currencyDataManager.currencies[fromCurrencyIndexPath.row]
+            let toCurrency = currencyDataManager.currencies[toCurrencyIndexPath.row]
+            let currencyConvert = CurrencyConversion(from: fromCurrency, to: toCurrency)
+
+            if (handler != nil) {
+                handler!(currencyConvert)
+            }
+            cancel(sender: sender)
+        }
+    }
+}
