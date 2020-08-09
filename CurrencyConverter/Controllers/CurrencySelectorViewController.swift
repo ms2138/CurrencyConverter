@@ -17,7 +17,12 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable {
     fileprivate var selectedCurrencies = [String: IndexPath]()
     fileprivate var disabledCurrencies = [UITableView: IndexPath]()
     var handler: ((CurrencyConversion) -> ())?
-
+    var isDoneBarButtonItemEnabled: Bool = false {
+        willSet {
+            navigationItem.rightBarButtonItem?.isEnabled = newValue
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -119,6 +124,47 @@ extension CurrencySelectorViewController: UITableViewDataSource {
         } else {
             return sectionTitles[1]
         }
+    }
+}
+
+extension CurrencySelectorViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+
+        let tableViewIndex = (tableView == fromCurrencyTableView) ? 0 : 1
+        let key = sectionTitles[tableViewIndex]
+
+        if let oldIndexPath = selectedCurrencies[key] {
+            if (oldIndexPath != indexPath) {
+                let oldCell = tableView.cellForRow(at: oldIndexPath)
+                oldCell?.accessoryType = .none
+            }
+        }
+
+        selectedCurrencies[key] = indexPath
+        if (tableView == fromCurrencyTableView) {
+            if let oldIndexPath = disabledCurrencies[toCurrencyTableView] {
+                toggleCellUserInteraction(in: toCurrencyTableView, at: oldIndexPath)
+            }
+            disabledCurrencies[toCurrencyTableView] = indexPath
+            if let cell = toCurrencyTableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .none
+                cell.enable(false)
+                selectedCurrencies.removeValue(forKey: "To")
+            }
+        }
+
+        toggleCellCheckMark(for: cell)
+
+        if (cell.accessoryType == .none) {
+            selectedCurrencies.removeValue(forKey: key)
+        }
+
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        isDoneBarButtonItemEnabled = (selectedCurrencies.values.count == 2)
     }
 }
 
