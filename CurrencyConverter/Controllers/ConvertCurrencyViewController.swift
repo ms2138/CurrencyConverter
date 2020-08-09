@@ -231,3 +231,24 @@ extension ConvertCurrencyViewController {
         }
     }
 }
+
+extension ConvertCurrencyViewController {
+    // MARK: - Segue methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+            case "showSelectCurrencies"?:
+                let navController = segue.destination as! UINavigationController
+                if let viewController = navController.topViewController {
+                    let vc = viewController as! CurrencySelectorViewController
+                    vc.previousConversion = currencyConversion
+                    vc.handler = {
+                        [unowned self] conversion in
+                        self.currencyConversion = conversion
+                    }
+            }
+            default:
+                preconditionFailure("Segue identifier did not match")
+        }
+    }
+}
