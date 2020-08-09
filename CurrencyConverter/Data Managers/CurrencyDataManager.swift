@@ -13,6 +13,9 @@ class CurrencyDataManager {
     var pathToSavedCurrencies: URL {
         return FileManager.default.pathToFile(filename: "currencies.json")
     }
+    var savedFileExists: Bool {
+        return FileManager.default.fileExists(atPath: pathToSavedCurrencies.path)
+    }
 
     init() {
         self.currencies = [Currency]()
@@ -41,7 +44,7 @@ extension CurrencyDataManager {
         currencyDownloader.getCurrencyData { [weak self] (currencies, response, error) in
             guard let weakSelf = self else { return }
             if let currencies = currencies {
-                weakSelf.currencies.append(contentsOf: currencies)
+                weakSelf.currencies = currencies
                 completion?()
             }
         }
