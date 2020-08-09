@@ -226,3 +226,21 @@ extension CurrencySelectorViewController {
         return nil
     }
 }
+
+extension CurrencySelectorViewController {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        if let conversion = previousConversion {
+            if let fromIndexPath = getIndexPath(for: conversion.from), let toIndexPath = getIndexPath(for: conversion.to) {
+                if (scrollView == fromCurrencyTableView) {
+                    if (checkIfCellHasCheckMark(in: fromCurrencyTableView, indexPath: fromIndexPath) == false) {
+                        tableView(fromCurrencyTableView, didSelectRowAt: fromIndexPath)
+                    }
+                } else {
+                    if (checkIfCellHasCheckMark(in: toCurrencyTableView, indexPath: toIndexPath) == false) {
+                        tableView(toCurrencyTableView, didSelectRowAt: toIndexPath)
+                    }
+                }
+            }
+        }
+    }
+}
