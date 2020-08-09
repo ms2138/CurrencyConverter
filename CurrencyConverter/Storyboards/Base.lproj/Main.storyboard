@@ -27,6 +27,7 @@
                                         <nil key="highlightedColor"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Liu-y6-Vj4" appends="YES" id="Uig-xh-mDJ"/>
+                                            <outletCollection property="gestureRecognizers" destination="BGT-Kv-4pf" appends="YES" id="4F2-Qm-0PR"/>
                                         </connections>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-lq-xua" customClass="CustomLabel" customModule="CurrencyConverter" customModuleProvider="target">
@@ -40,6 +41,7 @@
                                             <outletCollection property="gestureRecognizers" destination="EZO-9s-vKs" appends="YES" id="JyT-Ba-Jkg"/>
                                             <outletCollection property="gestureRecognizers" destination="Ee5-dl-DrU" appends="YES" id="QbV-SM-jZp"/>
                                             <outletCollection property="gestureRecognizers" destination="UI2-h4-Z4y" appends="YES" id="M8a-jN-Nwb"/>
+                                            <outletCollection property="gestureRecognizers" destination="neh-gi-50f" appends="YES" id="IMh-Wu-Wdi"/>
                                         </connections>
                                     </label>
                                 </subviews>
@@ -57,10 +59,10 @@
                                 <rect key="frame" x="0.0" y="174" width="414" height="688"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-eY-fWB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="203.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="125.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFW-P8-JVB" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="62.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="36.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="From">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,7 +75,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf3-MD-0Lj">
-                                                <rect key="frame" x="0.0" y="70.5" width="414" height="62.5"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="36.5"/>
                                                 <state key="normal" image="Up_Down_Arrow">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -82,7 +84,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCc-ZB-36K" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="141" width="414" height="62.5"/>
+                                                <rect key="frame" x="0.0" y="89" width="414" height="36.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="To">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,13 +99,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sm8-h8-2DZ">
-                                        <rect key="frame" x="0.0" y="211.5" width="414" height="476.5"/>
+                                        <rect key="frame" x="0.0" y="133.5" width="414" height="554.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hZp-If-WRu">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeO-7c-4i7" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="95"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +129,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmM-df-EIh" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="138" y="0.0" width="138" height="95"/>
+                                                        <rect key="frame" x="138" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -151,7 +153,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhj-Sr-21S" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="276" y="0.0" width="138" height="95"/>
+                                                        <rect key="frame" x="276" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -177,10 +179,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-Mn-cQd">
-                                                <rect key="frame" x="0.0" y="95" width="414" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="111" width="414" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNk-Ik-Lu9" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="95.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,7 +206,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGo-z3-GrO" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="138" y="0.0" width="138" height="95.5"/>
+                                                        <rect key="frame" x="138" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -228,7 +230,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-JY-IzT" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="276" y="0.0" width="138" height="95.5"/>
+                                                        <rect key="frame" x="276" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -254,10 +256,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="q3v-wB-zaD">
-                                                <rect key="frame" x="0.0" y="190.5" width="414" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="222" width="414" height="110.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-fw-ifW" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="95.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="110.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -281,7 +283,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ6-0D-Lpp" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="138" y="0.0" width="138" height="95.5"/>
+                                                        <rect key="frame" x="138" y="0.0" width="138" height="110.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,7 +307,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvj-RH-ch3" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="276" y="0.0" width="138" height="95.5"/>
+                                                        <rect key="frame" x="276" y="0.0" width="138" height="110.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -331,10 +333,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DvI-12-eht">
-                                                <rect key="frame" x="0.0" y="286" width="414" height="95"/>
+                                                <rect key="frame" x="0.0" y="332.5" width="414" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWl-sK-97W" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="95"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -358,7 +360,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfa-Io-vHc" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="138" y="0.0" width="138" height="95"/>
+                                                        <rect key="frame" x="138" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -382,7 +384,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdh-ls-zLX" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="276" y="0.0" width="138" height="95"/>
+                                                        <rect key="frame" x="276" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="C">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -408,10 +410,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZE3-B0-z5I">
-                                                <rect key="frame" x="0.0" y="381" width="414" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="443.5" width="414" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPk-bl-Wmb" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="95.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                                         <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="40"/>
                                                         <state key="normal" title="Convert">
@@ -481,6 +483,16 @@
                         <action selector="handleDoubleTapWithRecognizer:" destination="BYZ-38-t0r" id="EbX-4Z-Wz6"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="neh-gi-50f">
+                    <connections>
+                        <action selector="handleLongPressWithRecognizer:" destination="BYZ-38-t0r" id="uaB-dY-VP1"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="BGT-Kv-4pf">
+                    <connections>
+                        <action selector="handleLongPressWithRecognizer:" destination="BYZ-38-t0r" id="Ssj-tv-GTZ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141" y="169"/>
         </scene>
