@@ -59,5 +59,13 @@ extension CurrencySelectorViewController: UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (tableView == fromCurrencyTableView) {
+            return sectionTitles[0]
+        } else {
+            return sectionTitles[1]
+        }
+    }
 }
 
