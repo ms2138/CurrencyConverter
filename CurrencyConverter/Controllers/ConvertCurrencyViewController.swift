@@ -169,6 +169,16 @@ extension ConvertCurrencyViewController {
         }
     }
 
+    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
+        let menuController = UIMenuController.shared
+        if (menuController.isMenuVisible == true) {
+            if let recognizerView = recognizer.view {
+                recognizerView.resignFirstResponder()
+            }
+            menuController.hideMenu()
+        }
+    }
+
     @IBAction func handleDoubleTap(recognizer: UITapGestureRecognizer) {
         if let rate = exchangeRate {
             exchangeRateDisplayLabel.text = String(rate)
