@@ -28,6 +28,12 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable {
 
         loadCurrencies()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        performPreviousCurrencyConversionSelection()
+    }
 }
 
 extension CurrencySelectorViewController {
@@ -50,6 +56,23 @@ extension CurrencySelectorViewController {
             }
         } else {
             currencyDataManager.readCurrencies()
+        }
+    }
+
+    fileprivate func performPreviousCurrencyConversionSelection() {
+        if let conversion = previousConversion {
+            if let fromIndexPath = getIndexPath(for: conversion.from), let toIndexPath = getIndexPath(for: conversion.to) {
+
+                fromCurrencyTableView.scrollToRow(at: fromIndexPath, at: .middle, animated: true)
+                toCurrencyTableView.scrollToRow(at: toIndexPath, at: .middle, animated: true)
+
+                if (fromCurrencyTableView.indexPathsForVisibleRows?.contains(fromIndexPath) == true) {
+                    tableView(fromCurrencyTableView, didSelectRowAt: fromIndexPath)
+                }
+                if (toCurrencyTableView.indexPathsForVisibleRows?.contains(toIndexPath) == true) {
+                    tableView(toCurrencyTableView, didSelectRowAt: toIndexPath)
+                }
+            }
         }
     }
 }
@@ -128,6 +151,8 @@ extension CurrencySelectorViewController: UITableViewDataSource {
 }
 
 extension CurrencySelectorViewController: UITableViewDelegate {
+    // MARK: - Table view delegate methods
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return
@@ -188,5 +213,16 @@ extension CurrencySelectorViewController {
             }
             cancel(sender: sender)
         }
+    }
+}
+
+extension CurrencySelectorViewController {
+    // MARK: - Helper methods
+
+    fileprivate func getIndexPath(for currency: Currency) -> IndexPath? {
+        if let index = currencyDataManager.currencies.firstIndex(of: currency) {
+            return IndexPath(row: index, section: 0)
+        }
+        return nil
     }
 }
