@@ -175,6 +175,18 @@ extension ConvertCurrencyViewController {
             outputDisplayLabel.isHidden = !isExchangeRateDisplayed
         }
     }
+
+    @IBAction func handleLongPress(recognizer: UILongPressGestureRecognizer) {
+        if (recognizer.state == .began) {
+            if let recognizerView = recognizer.view, let recognizerSuperView = recognizerView.superview {
+                let menuController = UIMenuController.shared
+                if (menuController.isMenuVisible == false) {
+                    recognizerView.becomeFirstResponder()
+                    menuController.showMenu(from: recognizerSuperView, rect: recognizerView.bounds)
+                }
+            }
+        }
+    }
 }
 
 extension ConvertCurrencyViewController {
