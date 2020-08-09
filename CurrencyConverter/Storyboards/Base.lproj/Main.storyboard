@@ -28,6 +28,7 @@
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Liu-y6-Vj4" appends="YES" id="Uig-xh-mDJ"/>
                                             <outletCollection property="gestureRecognizers" destination="BGT-Kv-4pf" appends="YES" id="4F2-Qm-0PR"/>
+                                            <outletCollection property="gestureRecognizers" destination="Kol-iG-DPn" appends="YES" id="Bgi-Vl-ov2"/>
                                         </connections>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-lq-xua" customClass="CustomLabel" customModule="CurrencyConverter" customModuleProvider="target">
@@ -42,6 +43,7 @@
                                             <outletCollection property="gestureRecognizers" destination="Ee5-dl-DrU" appends="YES" id="QbV-SM-jZp"/>
                                             <outletCollection property="gestureRecognizers" destination="UI2-h4-Z4y" appends="YES" id="M8a-jN-Nwb"/>
                                             <outletCollection property="gestureRecognizers" destination="neh-gi-50f" appends="YES" id="IMh-Wu-Wdi"/>
+                                            <outletCollection property="gestureRecognizers" destination="OHP-i6-WVr" appends="YES" id="MRx-EC-E97"/>
                                         </connections>
                                     </label>
                                 </subviews>
@@ -493,6 +495,16 @@
                         <action selector="handleLongPressWithRecognizer:" destination="BYZ-38-t0r" id="Ssj-tv-GTZ"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="OHP-i6-WVr">
+                    <connections>
+                        <action selector="handleTapWithRecognizer:" destination="BYZ-38-t0r" id="71B-ZQ-QR9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Kol-iG-DPn">
+                    <connections>
+                        <action selector="handleTapWithRecognizer:" destination="BYZ-38-t0r" id="QrS-Le-pge"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141" y="169"/>
         </scene>
