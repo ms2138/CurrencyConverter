@@ -55,6 +55,10 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        updateCurrencies(after: TimeInterval(26298000))
+
+        UIButton.appearance().isExclusiveTouch = true
     }
 }
 
