@@ -11,4 +11,5 @@ import Foundation
 struct Constants {
     static let exchangeRateCache = "ExchangeRateCache"
     static let cacheTimestamp = "CacheTimestamp"
+    static let selectedCurrencyConversion = "SelectedCurrencyConversion"
 }
