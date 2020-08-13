@@ -31,9 +31,7 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable {
         }
     }
     var currencyConversion: CurrencyConversion = {
-        let fromCurrency = Currency.init(name: "United States Dollar", symbol: "$", id: "USD")
-        let toCurrency = Currency.init(name: "Canadian Dollar", symbol: "$", id: "CAD")
-        return CurrencyConversion.init(from: fromCurrency, to: toCurrency)
+        return AppDefaults().selectedCurrencyConversion
         }() {
         willSet {
             setConversionButtonsTitle(newValue)
@@ -56,9 +54,30 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateCurrencies(after: TimeInterval(26298000))
+        setup()
+    }
 
+    private func setup() {
+        updateCurrencies(after: TimeInterval(26298000))
         UIButton.appearance().isExclusiveTouch = true
+        setConversionButtonsTitle(currencyConversion)
+
+        if (FileManager.default.fileExists(atPath: currencyDataManager.pathToSavedCurrencies.path) == false) {
+            AppDefaults().selectedCurrencyConversion = currencyConversion
+
+            currencyDataManager.downloadCurrencies {
+                [unowned self] in
+                if (self.currencyDataManager.currencies.count > 0) {
+                    self.currencyDataManager.currencies.sort { $0.name < $1.name }
+                    self.currencyDataManager.saveCurrencies()
+                } else {
+                    self.presentAlert(title: "Error",
+                                      message: "Failed to load currencies")
+                }
+            }
+        } else {
+            currencyDataManager.readCurrencies()
+        }
     }
 }
 
