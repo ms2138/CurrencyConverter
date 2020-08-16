@@ -11,13 +11,27 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    enum ShortcutIdentifier: String {
+        case selectCurrencies = "SelectCurrencies"
 
+        init?(fullIdentifier: String) {
+            guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
+                return nil
+            }
+            self.init(rawValue: shortIdentifier)
+        }
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        if let shortcutItem = connectionOptions.shortcutItem {
+            // Must call makeKeyAndVisible to perform the select currencies segue after launching the application
+            window?.makeKeyAndVisible()
+            _ = handleShortcut(shortcutItem)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +62,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem))
+    }
 
+    private func handleShortcut(_ item: UIApplicationShortcutItem) -> Bool {
+        guard let shortcutIdentifier = ShortcutIdentifier(fullIdentifier: item.type) else {
+            return false
+        }
+        guard let rvc = window?.rootViewController as? ConvertCurrencyViewController else {
+            return false
+        }
+        if (shortcutIdentifier == .selectCurrencies) {
+            if (rvc.presentedViewController == nil) {
+                debugLog("Handling SelectCurrencies quick action")
+                rvc.performSegue(withIdentifier: "showSelectCurrencies", sender: nil)
+            }
+            return true
+        }
+
+        return false
+    }
 }
 
