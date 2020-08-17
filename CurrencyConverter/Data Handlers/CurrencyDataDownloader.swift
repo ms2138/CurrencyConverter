@@ -9,6 +9,7 @@
 import Foundation
 
 class CurrencyDataDownloader {
+    #warning("Incomplete implementation.  Please register at https://free.currencyconverterapi.com/free-api-key to get an api key")
     private let apiKey = "ENTER KEY HERE"
 
     private func createURL(path: String, queryItems: [URLQueryItem] = []) -> URL? {
