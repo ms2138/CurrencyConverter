@@ -55,7 +55,13 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable {
         super.viewDidLoad()
 
         setup()
+
+        setupNotifications()
     }
+}
+
+extension ConvertCurrencyViewController {
+    // MARK: Setup methods
 
     private func setup() {
         updateCurrencies(after: TimeInterval(26298000))
@@ -77,6 +83,27 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable {
             }
         } else {
             currencyDataManager.readCurrencies()
+        }
+    }
+
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(save),
+                                               name: UIApplication.willTerminateNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(save),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+    }
+}
+
+extension ConvertCurrencyViewController {
+    @objc func save() {
+        AppDefaults().selectedCurrencyConversion = currencyConversion
+        if (exchangeRateCache.count > 0) {
+            debugLog("Saving exchange rate cache to user defaults - \(exchangeRateCache)")
+            AppDefaults().exchangeRateCache = exchangeRateCache
         }
     }
 }
