@@ -1,6 +1,9 @@
 # CurrencyConverter
 An application to convert currencies
 
+# Demo
+![CurrencyConverter - Animated gif demo](demo.gif)
+
 # Run Project
 To run the project:
 
