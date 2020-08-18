@@ -10,3 +10,5 @@ To run the project:
 * Open CurrencyConverter.xcodeproj
 * Build and run in Xcode
 
+# License
+This project is licensed under the MIT License.
