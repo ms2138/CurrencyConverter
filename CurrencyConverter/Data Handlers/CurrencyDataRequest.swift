@@ -22,4 +22,20 @@ class CurrencyDataRequest {
         self.url = url
         self.session = session
     }
+
+    func getData(completion: @escaping (Result<Data, Error>) -> ()) {
+        dataTask?.cancel()
+
+        let task = session.dataTask(with: url) { [weak self] (data, response, error) in
+            if let data = data {
+                completion(.success(data))
+                self?.dataTask = nil
+            } else if let error = error {
+                completion(.failure(error))
+            }
+        }
+
+        self.dataTask = task
+        task.resume()
+    }
 }
