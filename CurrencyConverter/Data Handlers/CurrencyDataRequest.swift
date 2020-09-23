@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum Result<Value, Error: Swift.Error> {
+    case success(Value),
+    failure(Error)
+}
+
 class CurrencyDataRequest {
 
 }
