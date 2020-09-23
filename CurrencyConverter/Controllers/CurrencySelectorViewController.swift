@@ -8,10 +8,10 @@
 
 import UIKit
 
-class CurrencySelectorViewController: UIViewController, AlertPresentable {
+class CurrencySelectorViewController: UIViewController, AlertPresentable, CurrencyDataController {
+    var currencies = [Currency]()
     @IBOutlet weak var fromCurrencyTableView: UITableView!
     @IBOutlet weak var toCurrencyTableView: UITableView!
-    var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
     var previousConversion: CurrencyConversion?
     fileprivate var sectionTitles = ["From", "To"]
     fileprivate var selectedCurrencies = [String: IndexPath]()
@@ -26,7 +26,7 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadCurrencies()
+        setup()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -39,15 +39,16 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable {
 extension CurrencySelectorViewController {
     // MARK: - Currency setup method
 
-    fileprivate func loadCurrencies() {
-        if (currencyDataManager.savedFileExists == false) {
-            currencyDataManager.downloadCurrencies {
+    fileprivate func setup() {
+        let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
+
+        if (currencyStorageManager.savedFileExists == false) {
+            self.loadCurrencies {
                 [weak self] in
                 guard let weakSelf = self else { return }
-                if (weakSelf.currencyDataManager.currencies.count > 0) {
-                    weakSelf.currencyDataManager.currencies.sort { $0.name < $1.name }
-                    weakSelf.currencyDataManager.saveCurrencies()
-                    weakSelf.toCurrencyTableView.reloadData()
+                if (weakSelf.currencies.count > 0) {
+                    currencyStorageManager.save(currencies: weakSelf.currencies)
+                    weakSelf.fromCurrencyTableView.reloadData()
                     weakSelf.toCurrencyTableView.reloadData()
                 } else {
                     weakSelf.presentAlert(title: "Error",
@@ -55,7 +56,9 @@ extension CurrencySelectorViewController {
                 }
             }
         } else {
-            currencyDataManager.readCurrencies()
+            if let theCurrencies = currencyStorageManager.read() {
+                currencies = theCurrencies
+            }
         }
     }
 
