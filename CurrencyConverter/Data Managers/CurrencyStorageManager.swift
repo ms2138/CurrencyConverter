@@ -8,8 +8,7 @@
 
 import Foundation
 
-class CurrencyDataManager {
-    var currencies: [Currency]
+class CurrencyStorageManager {
     var pathToSavedCurrencies: URL {
         return FileManager.default.pathToFile(filename: "currencies.json")
     }
@@ -22,7 +21,7 @@ class CurrencyDataManager {
     }
 }
 
-extension CurrencyDataManager {
+extension CurrencyStorageManager {
     func readCurrencies() {
         do {
             currencies = try JSONDataManager<Currency>().read(from: pathToSavedCurrencies)
