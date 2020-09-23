@@ -17,20 +17,20 @@ class CurrencyStorageManager {
     }
 
     init() {
-        self.currencies = [Currency]()
     }
 }
 
 extension CurrencyStorageManager {
-    func readCurrencies() {
+    func read() -> [Currency]? {
         do {
-            currencies = try JSONDataManager<Currency>().read(from: pathToSavedCurrencies)
+            return try JSONDataManager<Currency>().read(from: pathToSavedCurrencies)
         } catch {
             debugLog("Failed to read currency data")
+            return nil
         }
     }
 
-    func saveCurrencies() {
+    func save(currencies: [Currency]) {
         do {
             try JSONDataManager<[Currency]>().write(data: currencies, to: pathToSavedCurrencies)
         } catch {
