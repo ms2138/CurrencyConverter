@@ -9,4 +9,16 @@
 import Foundation
 
 class CurrencyURL {
+    #warning("Incomplete implementation.  Please register at https://free.currencyconverterapi.com/free-api-key to get an api key")
+    private let apiKey = "ENTER KEY HERE"
+
+    private func createBaseURL(path: String, queryItems: [URLQueryItem] = []) -> URL? {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "free.currencyconverterapi.com"
+        components.path = "/api/v6/\(path)"
+        components.queryItems = queryItems
+        components.queryItems?.append(URLQueryItem(name: "apiKey", value: apiKey))
+        return components.url
+    }
 }
