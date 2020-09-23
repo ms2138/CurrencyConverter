@@ -9,5 +9,7 @@
 import UIKit
 
 protocol CurrencyDataController where Self: UIViewController  {
-    
+    var currencies: [Currency] { get set }
+
+    func loadCurrencies(completion: (() -> Void)?)
 }
