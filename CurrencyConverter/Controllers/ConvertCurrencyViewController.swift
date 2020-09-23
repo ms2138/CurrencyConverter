@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ConvertCurrencyViewController: UIViewController, AlertPresentable {
+class ConvertCurrencyViewController: UIViewController, AlertPresentable, CurrencyDataController {
+    var currencies = [Currency]()
     @IBOutlet weak var outputDisplayLabel: UILabel!
     @IBOutlet weak var exchangeRateDisplayLabel: UILabel!
     @IBOutlet weak var convertFromButton: UIButton!
     @IBOutlet weak var convertToButton: UIButton!
     @IBOutlet weak var switchConversionButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
-    var currencyDataManager: CurrencyDataManager = CurrencyDataManager()
     fileprivate var exchangeRateCache = [String: Double]()
     var total = 0.0
     var roundedTotal: String {
@@ -68,21 +68,24 @@ extension ConvertCurrencyViewController {
         UIButton.appearance().isExclusiveTouch = true
         setConversionButtonsTitle(currencyConversion)
 
-        if (FileManager.default.fileExists(atPath: currencyDataManager.pathToSavedCurrencies.path) == false) {
+        let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
+
+        if (currencyStorageManager.savedFileExists == false) {
             AppDefaults().selectedCurrencyConversion = currencyConversion
 
-            currencyDataManager.downloadCurrencies {
+            self.loadCurrencies {
                 [unowned self] in
-                if (self.currencyDataManager.currencies.count > 0) {
-                    self.currencyDataManager.currencies.sort { $0.name < $1.name }
-                    self.currencyDataManager.saveCurrencies()
+                if (self.currencies.count > 0) {
+                    currencyStorageManager.save(currencies: self.currencies)
                 } else {
                     self.presentAlert(title: "Error",
                                       message: "Failed to load currencies")
                 }
             }
         } else {
-            currencyDataManager.readCurrencies()
+            if let theCurrencies = currencyStorageManager.read() {
+                currencies = theCurrencies
+            }
         }
     }
 
@@ -125,13 +128,15 @@ extension ConvertCurrencyViewController {
 
     private func updateCurrencies(after seconds: TimeInterval) {
         do {
-            let fileAttributes = try FileManager.default.attributesOfItem(atPath: currencyDataManager.pathToSavedCurrencies.path) as NSDictionary
+            let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath:
+                currencyStorageManager.pathToSavedCurrencies.path) as NSDictionary
             if let creationDate = fileAttributes.fileCreationDate() {
                 if (Date().timeIntervalSince(creationDate) >= seconds) {
-                    currencyDataManager.downloadCurrencies {
+                    loadCurrencies {
                         [unowned self] in
-                        if (self.currencyDataManager.currencies.count > 0) {
-                            self.currencyDataManager.saveCurrencies()
+                        if (self.currencies.count > 0) {
+                            currencyStorageManager.save(currencies: self.currencies)
                         }
                     }
                 } else {
@@ -160,21 +165,32 @@ extension ConvertCurrencyViewController {
             } else {
                 convertButton.isUserInteractionEnabled = false
                 flushExchangeRateCache(after: 3600)
-                let currencyDownloader = CurrencyDataDownloader.init()
-                currencyDownloader.getExchangeRate(for: currencyConversion) { [unowned self] (exchange, response, error) in
-                    defer { self.convertButton.isUserInteractionEnabled = true }
-                    if let exchange = exchange {
-                        let rate = exchange.rate
-                        self.exchangeRateCache[self.conversionID] = rate
-                        convertAndDisplayTotal(rate, amount)
-                    } else {
-                        // If the data request fails, get last saved exchange rate for the given conversionId
-                        if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
-                            debugLog("Converting currency using exchange rate cache")
-                            convertAndDisplayTotal(exchange, amount)
-                        } else {
-                            self.presentAlert(title: "Error",
-                                              message: "Failed to perform conversion")
+                if let url = CurrencyURL().getExchangeRateURL(from: currencyConversion) {
+                    let currencyDownloader = CurrencyDataRequest(url: url)
+                    currencyDownloader.getData { [unowned self] result in
+                        DispatchQueue.main.async {
+                            switch result {
+                                case .success(let data):
+                                    do {
+                                        // let exchange = try ExchangeRateData(data: data).getExchageRate()
+                                        let exchange = try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
+                                        defer { self.convertButton.isUserInteractionEnabled = true }
+                                        let rate = exchange.rate
+                                        self.exchangeRateCache[self.conversionID] = rate
+                                        convertAndDisplayTotal(rate, amount)
+                                    } catch {
+                                        // If the data request fails, get last saved exchange rate for the given conversionId
+                                        if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
+                                            debugLog("Converting currency using exchange rate cache")
+                                            convertAndDisplayTotal(exchange, amount)
+                                        } else {
+                                            self.presentAlert(title: "Error",
+                                                              message: "Failed to perform conversion")
+                                        }
+                                }
+                                case .failure(let error):
+                                    debugLog("Error: \(error.localizedDescription)")
+                            }
                         }
                     }
                 }
