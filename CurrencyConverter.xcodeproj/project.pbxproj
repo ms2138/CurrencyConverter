@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CC427BE251AECD800611294 /* CurrencyDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427BD251AECD800611294 /* CurrencyDataRequest.swift */; };
+		3CC427C0251AEF5200611294 /* CurrencyURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427BF251AEF5200611294 /* CurrencyURL.swift */; };
 		3CDFD7B124D7B52F0015A2CC /* ConvertCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */; };
 		3CDFD7B624D7B7840015A2CC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B524D7B7840015A2CC /* Currency.swift */; };
 		3CDFD7B924D7B7E70015A2CC /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		3CC427BD251AECD800611294 /* CurrencyDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataRequest.swift; sourceTree = "<group>"; };
+		3CC427BF251AEF5200611294 /* CurrencyURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyURL.swift; sourceTree = "<group>"; };
 		3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewController.swift; sourceTree = "<group>"; };
 		3CDFD7B524D7B7840015A2CC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		844039AE24D7B1940073302F /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
+				3CC427BF251AEF5200611294 /* CurrencyURL.swift */,
 				3CDFD7D724DBD2EA0015A2CC /* Protocols */,
 				3CDFD7CE24DA73F80015A2CC /* Extensions */,
 				3CDFD7C924D931BF0015A2CC /* Data Managers */,
@@ -287,6 +290,7 @@
 				3CDFD7CB24DA6CE00015A2CC /* CustomLabel.swift in Sources */,
 				3CDFD7BB24D7C2090015A2CC /* ExchangeRate.swift in Sources */,
 				3CDFD7B124D7B52F0015A2CC /* ConvertCurrencyViewController.swift in Sources */,
+				3CC427C0251AEF5200611294 /* CurrencyURL.swift in Sources */,
 				3CDFD7D624DBD2DA0015A2CC /* AlertPresentable.swift in Sources */,
 				3CDFD7C824D931B20015A2CC /* JSONDataManager.swift in Sources */,
 				3CDFD7D224DBC7BD0015A2CC /* AppDefaults.swift in Sources */,
