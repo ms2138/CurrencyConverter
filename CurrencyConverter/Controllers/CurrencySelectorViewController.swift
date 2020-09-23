@@ -115,7 +115,7 @@ extension CurrencySelectorViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyDataManager.currencies.count
+        return currencies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,7 +124,7 @@ extension CurrencySelectorViewController: UITableViewDataSource {
         let tableViewIndex = (tableView == fromCurrencyTableView) ? 0 : 1
         let key = sectionTitles[tableViewIndex]
 
-        let currency = currencyDataManager.currencies[indexPath.row]
+        let currency = currencies[indexPath.row]
         cell.textLabel?.text = currency.name
         cell.accessoryType = .none
         cell.enable(true)
@@ -207,8 +207,8 @@ extension CurrencySelectorViewController {
         let fromCurrencyKey = sectionTitles[0]
         let toCurrencyKey = sectionTitles[1]
         if let fromCurrencyIndexPath = selectedCurrencies[fromCurrencyKey], let toCurrencyIndexPath = selectedCurrencies[toCurrencyKey] {
-            let fromCurrency = currencyDataManager.currencies[fromCurrencyIndexPath.row]
-            let toCurrency = currencyDataManager.currencies[toCurrencyIndexPath.row]
+            let fromCurrency = currencies[fromCurrencyIndexPath.row]
+            let toCurrency = currencies[toCurrencyIndexPath.row]
             let currencyConvert = CurrencyConversion(from: fromCurrency, to: toCurrency)
 
             if (handler != nil) {
@@ -223,7 +223,7 @@ extension CurrencySelectorViewController {
     // MARK: - Helper methods
 
     fileprivate func getIndexPath(for currency: Currency) -> IndexPath? {
-        if let index = currencyDataManager.currencies.firstIndex(of: currency) {
+        if let index = currencies.firstIndex(of: currency) {
             return IndexPath(row: index, section: 0)
         }
         return nil
