@@ -11,7 +11,7 @@ import Foundation
 class CurrencyStorageManager {
     var filename: String
     var pathToSavedCurrencies: URL {
-        return FileManager.default.pathToFile(filename: "currencies.json")
+        return FileManager.default.pathToFile(filename: filename)
     }
     var savedFileExists: Bool {
         return FileManager.default.fileExists(atPath: pathToSavedCurrencies.path)
