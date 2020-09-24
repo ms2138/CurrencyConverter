@@ -43,16 +43,17 @@ extension CurrencySelectorViewController {
         let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
 
         if (currencyStorageManager.savedFileExists == false) {
-            self.loadCurrencies {
-                [weak self] in
+            self.loadCurrencies { [weak self] in
                 guard let weakSelf = self else { return }
                 if (weakSelf.currencies.count > 0) {
                     currencyStorageManager.save(currencies: weakSelf.currencies)
                     weakSelf.fromCurrencyTableView.reloadData()
                     weakSelf.toCurrencyTableView.reloadData()
                 } else {
-                    weakSelf.presentAlert(title: "Error",
-                                          message: "Failed to load currencies")
+                    DispatchQueue.main.async {
+                        weakSelf.presentAlert(title: "Error",
+                                              message: "Failed to load currencies")
+                    }
                 }
             }
         } else {

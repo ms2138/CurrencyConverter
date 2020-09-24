@@ -78,8 +78,10 @@ extension ConvertCurrencyViewController {
                 if (self.currencies.count > 0) {
                     currencyStorageManager.save(currencies: self.currencies)
                 } else {
-                    self.presentAlert(title: "Error",
-                                      message: "Failed to load currencies")
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: "Error",
+                                          message: "Failed to load currencies")
+                    }
                 }
             }
         } else {
@@ -165,6 +167,7 @@ extension ConvertCurrencyViewController {
             } else {
                 convertButton.isUserInteractionEnabled = false
                 flushExchangeRateCache(after: 3600)
+
                 if let url = CurrencyURL().getExchangeRateURL(from: currencyConversion) {
                     let currencyDownloader = CurrencyDataRequest(url: url)
                     currencyDownloader.getData { [unowned self] result in
@@ -172,7 +175,6 @@ extension ConvertCurrencyViewController {
                             switch result {
                                 case .success(let data):
                                     do {
-                                        // let exchange = try ExchangeRateData(data: data).getExchageRate()
                                         let exchange = try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
                                         defer { self.convertButton.isUserInteractionEnabled = true }
                                         let rate = exchange.rate
