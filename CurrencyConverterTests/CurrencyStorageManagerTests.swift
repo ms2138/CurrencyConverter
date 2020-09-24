@@ -11,9 +11,10 @@ import XCTest
 @testable import CurrencyConverter
 
 class CurrencyStorageManagerTests: XCTestCase {
+    var currencyStorageManager: CurrencyStorageManager!
 
     override func setUp() {
-
+        currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
     }
 
     override func tearDown() {
