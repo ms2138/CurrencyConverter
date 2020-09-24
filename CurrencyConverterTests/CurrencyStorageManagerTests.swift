@@ -18,6 +18,22 @@ class CurrencyStorageManagerTests: XCTestCase {
     }
 
     override func tearDown() {
-
+        try? FileManager.default.removeItem(at: currencyStorageManager.pathToSavedCurrencies)
     }
+
+    func testSaveCurrenciesSuccess() {
+        let currencies = [Currency(name: "United States Dollar", symbol: "$", id: "USD")]
+
+        currencyStorageManager.save(currencies: currencies)
+
+        XCTAssertTrue(currencyStorageManager.savedFileExists)
+        XCTAssertEqual(currencyStorageManager.pathToSavedCurrencies.lastPathComponent, "currencies.json")
+    }
+
+    func testReadCurrenciesSuccess() {
+        if let currencies = currencyStorageManager.read() {
+            XCTAssertNotEqual(currencies.count, 0)
+        }
+    }
+
 }
