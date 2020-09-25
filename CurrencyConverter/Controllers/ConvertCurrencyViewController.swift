@@ -57,6 +57,19 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable, Currenc
         setup()
 
         setupNotifications()
+
+        #if DEBUG
+        setupAccessibilityIdentifiers()
+        #endif
+    }
+}
+
+extension ConvertCurrencyViewController {
+    private func setupAccessibilityIdentifiers() {
+        outputDisplayLabel.accessibilityIdentifier = AccessibilityIdentifier.outputDisplayLabel.rawValue
+        exchangeRateDisplayLabel.accessibilityIdentifier = AccessibilityIdentifier.exchangeRateDisplayLabel.rawValue
+        convertFromButton.accessibilityIdentifier = AccessibilityIdentifier.convertFromButton.rawValue
+        convertToButton.accessibilityIdentifier = AccessibilityIdentifier.convertToButton.rawValue
     }
 }
 

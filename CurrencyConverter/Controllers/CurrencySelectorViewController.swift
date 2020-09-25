@@ -26,6 +26,10 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable, Curren
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        #if DEBUG
+        setupAccessibilityIdentifiers()
+        #endif
+
         setup()
     }
 
@@ -33,6 +37,13 @@ class CurrencySelectorViewController: UIViewController, AlertPresentable, Curren
         super.viewDidAppear(animated)
 
         performPreviousCurrencyConversionSelection()
+    }
+}
+
+extension CurrencySelectorViewController {
+    private func setupAccessibilityIdentifiers() {
+        fromCurrencyTableView.accessibilityIdentifier = AccessibilityIdentifier.fromCurrencyTableView.rawValue
+        toCurrencyTableView.accessibilityIdentifier = AccessibilityIdentifier.toCurrencyTableView.rawValue
     }
 }
 
