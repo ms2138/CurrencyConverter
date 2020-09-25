@@ -15,6 +15,8 @@
 		3CC427D6251C4F5700611294 /* CurrencyDataDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427D5251C4F5700611294 /* CurrencyDataDecoderTests.swift */; };
 		3CC427D8251C4FFC00611294 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC427D7251C4FFC00611294 /* currencies.json */; };
 		3CC427DA251C54B200611294 /* exchangeRate.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC427D9251C54B200611294 /* exchangeRate.json */; };
+		3CC427EA251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427E9251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift */; };
+		3CC427EE251D9C4800611294 /* ConvertCurrencyViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427ED251D9C4800611294 /* ConvertCurrencyViewControllerHelper.swift */; };
 		3CDFD7B124D7B52F0015A2CC /* ConvertCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */; };
 		3CDFD7B624D7B7840015A2CC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B524D7B7840015A2CC /* Currency.swift */; };
 		3CDFD7B924D7B7E70015A2CC /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */; };
@@ -69,6 +71,8 @@
 		3CC427D9251C54B200611294 /* exchangeRate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exchangeRate.json; sourceTree = "<group>"; };
 		3CC427DF251D995100611294 /* CurrencyConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC427E3251D995100611294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CC427E9251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewControllerTests.swift; sourceTree = "<group>"; };
+		3CC427ED251D9C4800611294 /* ConvertCurrencyViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewControllerHelper.swift; sourceTree = "<group>"; };
 		3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewController.swift; sourceTree = "<group>"; };
 		3CDFD7B524D7B7840015A2CC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
@@ -136,8 +140,18 @@
 			isa = PBXGroup;
 			children = (
 				3CC427E3251D995100611294 /* Info.plist */,
+				3CC427E9251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift */,
+				3CC427EF251D9C5B00611294 /* Helpers */,
 			);
 			path = CurrencyConverterUITests;
+			sourceTree = "<group>";
+		};
+		3CC427EF251D9C5B00611294 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3CC427ED251D9C4800611294 /* ConvertCurrencyViewControllerHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3CDFD7B224D7B5390015A2CC /* Controllers */ = {
@@ -347,6 +361,7 @@
 					};
 					3CC427DE251D995100611294 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 844039AB24D7B1940073302F;
 					};
 					844039AB24D7B1940073302F = {
@@ -418,6 +433,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC427EA251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */,
+				3CC427EE251D9C4800611294 /* ConvertCurrencyViewControllerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +546,7 @@
 		3CC427E7251D995100611294 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CurrencyConverterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -538,6 +556,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CurrencyConverterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CurrencyConverter;
@@ -547,6 +566,7 @@
 		3CC427E8251D995100611294 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CurrencyConverterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
