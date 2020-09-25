@@ -9,4 +9,10 @@
 import Foundation
 
 enum AccessibilityIdentifier: String {
+    case outputDisplayLabel = "OutputDisplayLabel",
+         exchangeRateDisplayLabel = "ExchangeRateDisplayLabel",
+         convertToButton = "ConvertToButton",
+         convertFromButton = "ConvertFromButton",
+         fromCurrencyTableView = "FromCurrencyTableView",
+         toCurrencyTableView = "ToCurrencyTableView"
 }
