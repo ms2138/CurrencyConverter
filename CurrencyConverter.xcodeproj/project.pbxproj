@@ -156,6 +156,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		3CC427F2251D9DD900611294 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				3CC427F0251D9D3F00611294 /* AccessibilityIdentifier.swift */,
+			);
+			path = Accessibility;
+			sourceTree = "<group>";
+		};
 		3CDFD7B224D7B5390015A2CC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,7 +281,7 @@
 		844039AE24D7B1940073302F /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				3CC427F0251D9D3F00611294 /* AccessibilityIdentifier.swift */,
+				3CC427F2251D9DD900611294 /* Accessibility */,
 				3CC427BF251AEF5200611294 /* CurrencyURL.swift */,
 				3CDFD7D724DBD2EA0015A2CC /* Protocols */,
 				3CDFD7CE24DA73F80015A2CC /* Extensions */,
