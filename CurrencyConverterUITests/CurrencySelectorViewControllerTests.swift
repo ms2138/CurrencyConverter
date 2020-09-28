@@ -96,4 +96,50 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         XCTAssertFalse(selectedCell.isSelected)
     }
 
+    func testSelectingADifferentCurrencyInToCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let tableView = helper.toTableView
+        let selectedCell = tableView.cells.containing(.staticText, identifier: "Canadian Dollar").firstMatch
+        _ = selectedCell.waitForExistence(timeout: 1.0)
+        XCTAssertTrue(selectedCell.isSelected)
+
+        let newSelectedCell = tableView.cells.containing(.staticText, identifier: "CFP Franc").firstMatch
+        newSelectedCell.tap()
+        XCTAssertTrue(newSelectedCell.isSelected)
+        XCTAssertFalse(selectedCell.isSelected)
+    }
+
+    func testSelectingTheSameCurrency() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let fromTableView = helper.fromTableView
+        let fromSelectedCurrencyCell = fromTableView.cells.containing(.staticText, identifier: "United States Dollar").firstMatch
+        _ = fromSelectedCurrencyCell.waitForExistence(timeout: 1.0)
+        XCTAssertTrue(fromSelectedCurrencyCell.isSelected)
+
+        let toTableView = helper.toTableView
+        let toSelectedCurrencyCell = toTableView.cells.containing(.staticText, identifier: "United States Dollar").firstMatch
+        toSelectedCurrencyCell.tap()
+        XCTAssertFalse(toSelectedCurrencyCell.isSelected)
+    }
+
+    func testDoneButtonDisabledIfNoCurrencySelectedInFromCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let tableView = helper.fromTableView
+
+        let selectedCell = tableView.cells.containing(.staticText, identifier: "United States Dollar").firstMatch
+        let _ = selectedCell.waitForExistence(timeout: 1.0)
+
+        XCTAssertTrue(selectedCell.isSelected)
+
+        selectedCell.tap()
+
+        XCTAssertFalse(app.buttons["Done"].firstMatch.isEnabled)
+    }
+
 }
