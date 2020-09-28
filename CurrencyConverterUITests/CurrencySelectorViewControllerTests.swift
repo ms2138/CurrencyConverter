@@ -21,4 +21,22 @@ class CurrencySelectorViewControllerTests: XCTestCase {
 
     override func tearDown() {
     }
+
+    func testFromCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        XCTAssertTrue(helper.fromTableView.exists)
+        XCTAssertTrue(helper.fromTableViewHeaderTitle.exists)
+        XCTAssertEqual(helper.fromTableViewHeaderTitle.label, "From")
+    }
+
+    func testToCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        XCTAssertTrue(helper.toTableView.exists)
+        XCTAssertTrue(helper.toTableViewHeaderTitle.exists)
+        XCTAssertEqual(helper.toTableViewHeaderTitle.label, "To")
+    }
 }
