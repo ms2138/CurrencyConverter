@@ -39,4 +39,32 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         XCTAssertTrue(helper.toTableViewHeaderTitle.exists)
         XCTAssertEqual(helper.toTableViewHeaderTitle.label, "To")
     }
+
+    func testCurrenciesInFromCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let tableView = helper.fromTableView
+        XCTAssertNotEqual(tableView.cells.count, 0)
+    }
+
+    func testCurrenciesInToCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let tableView = helper.toTableView
+        XCTAssertNotEqual(tableView.cells.count, 0)
+    }
+
+    func testSelectedCurrencyInFromCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let tableView = helper.fromTableView
+
+        let selectedCell = tableView.cells.containing(.staticText, identifier: "United States Dollar").firstMatch
+
+        XCTAssertTrue(selectedCell.waitForExistence(timeout: 3.0))
+        XCTAssertTrue(selectedCell.isSelected)
+    }
 }
