@@ -48,4 +48,38 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertTrue(decimalButton.exists)
         XCTAssertEqual(displayLabel.label, "\(display)")
     }
+
+    func testClearOutputDisplay() {
+        let app = XCUIApplication()
+
+        let displayLabel = helper.outputDisplayLabel
+        XCTAssertEqual(displayLabel.label, "0")
+
+        app.buttons.containing(.staticText, identifier:"5").element.tap()
+
+        XCTAssertEqual(displayLabel.label, "5")
+
+        app.buttons.containing(.staticText, identifier:"C").element.tap()
+
+        XCTAssertEqual(displayLabel.label, "0")
+    }
+
+    func testSwipeGestureDeletingASingleDigit() {
+        let app = XCUIApplication()
+
+        let displayLabel = helper.outputDisplayLabel
+        XCTAssertEqual(displayLabel.label, "0")
+
+        app.buttons.containing(.staticText, identifier:"5").element.tap()
+        XCTAssertEqual(displayLabel.label, "5")
+
+        displayLabel.swipeRight()
+        XCTAssertEqual(displayLabel.label, "0")
+
+        app.buttons.containing(.staticText, identifier:"5").element.tap()
+        XCTAssertEqual(displayLabel.label, "5")
+
+        displayLabel.swipeLeft()
+        XCTAssertEqual(displayLabel.label, "0")
+    }
 }
