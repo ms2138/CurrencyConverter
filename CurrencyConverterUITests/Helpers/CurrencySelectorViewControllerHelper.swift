@@ -9,5 +9,19 @@
 import XCTest
 
 class CurrencySelectorViewControllerHelper {
+    var fromTableView: XCUIElement {
+        return XCUIApplication().tables["FromCurrencyTableView"]
+    }
 
+    var toTableView: XCUIElement {
+        return XCUIApplication().tables["ToCurrencyTableView"]
+    }
+
+    var fromTableViewHeaderTitle: XCUIElement {
+        return self.fromTableView.staticTexts["From"]
+    }
+
+    var toTableViewHeaderTitle: XCUIElement {
+        return self.toTableView.staticTexts["To"]
+    }
 }
