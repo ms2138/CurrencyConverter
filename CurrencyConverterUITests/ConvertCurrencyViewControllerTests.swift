@@ -113,4 +113,46 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertNotEqual(exchangeRate.label, "0")
     }
 
+    func testSwitchConversionButton() {
+        let app = XCUIApplication()
+
+        let convertToButton = helper.convertToButton
+        let convertFromButton = helper.convertFromButton
+
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+
+        let upDownArrowButton = app.buttons["Up Down Arrow"]
+        upDownArrowButton.tap()
+
+        XCTAssertEqual(convertFromButton.label, "Canadian Dollar")
+        XCTAssertEqual(convertToButton.label, "United States Dollar")
+    }
+
+    func testConvertToAndFromButtons() {
+        let app = XCUIApplication()
+
+        let convertToButton = helper.convertToButton
+        let convertFromButton = helper.convertFromButton
+
+        XCTAssertTrue(convertToButton.exists)
+        XCTAssertTrue(convertFromButton.exists)
+
+        convertToButton.tap()
+
+        let selectCurrenciesNavBar = app.navigationBars["Select Currencies"]
+        let cancelButton = app.navigationBars["Select Currencies"].buttons["Cancel"]
+
+        XCTAssertTrue(selectCurrenciesNavBar.exists)
+        XCTAssertTrue(cancelButton.exists)
+
+        cancelButton.tap()
+
+        convertFromButton.tap()
+
+        XCTAssertTrue(selectCurrenciesNavBar.exists)
+        XCTAssertTrue(cancelButton.exists)
+
+        cancelButton.tap()
+    }
 }
