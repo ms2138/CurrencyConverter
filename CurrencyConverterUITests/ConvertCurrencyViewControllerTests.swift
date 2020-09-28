@@ -82,4 +82,35 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         displayLabel.swipeLeft()
         XCTAssertEqual(displayLabel.label, "0")
     }
+
+    func testCopyMenuFunctionality() {
+        let app = XCUIApplication()
+
+        app.buttons["5"].tap()
+        helper.outputDisplayLabel.press(forDuration: 1.3)
+        let copyMenu = app.staticTexts["Copy"]
+        XCTAssertTrue(copyMenu.exists)
+        copyMenu.tap()
+
+        XCTAssertFalse(copyMenu.waitForExistence(timeout: 1.0))
+    }
+
+    func testExchangeRateDisplayLabelAfterConversion() {
+        let app = XCUIApplication()
+
+        app.buttons["5"].tap()
+        app.buttons["1"].tap()
+
+        let exchangeRate = helper.exchangeRateDisplayLabel
+        XCTAssertEqual(exchangeRate.label, "0")
+
+        app.buttons["Convert"].tap()
+
+        XCTAssertTrue(exchangeRate.waitForExistence(timeout: 2.0))
+        let outputdisplaylabelButton = helper.outputDisplayLabel
+        outputdisplaylabelButton.doubleTap()
+
+        XCTAssertNotEqual(exchangeRate.label, "0")
+    }
+
 }
