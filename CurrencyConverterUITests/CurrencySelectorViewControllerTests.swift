@@ -9,8 +9,11 @@
 import XCTest
 
 class CurrencySelectorViewControllerTests: XCTestCase {
+    var helper: CurrencySelectorViewControllerHelper!
 
     override func setUp() {
+        helper = CurrencySelectorViewControllerHelper()
+
         continueAfterFailure = false
 
         XCUIApplication().launch()
