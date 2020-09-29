@@ -167,16 +167,10 @@ extension ConvertCurrencyViewController {
 extension ConvertCurrencyViewController {
     // MARK: - Currency conversion methods
 
-    func convertCurrency() {
-        let convertAndDisplayTotal = { [unowned self] (rate: Double, amount: Double) in
-            self.total = self.performConversion(using: rate, amount: amount)
-            self.enteredAmount = self.roundedTotal
-            debugLog("The total converted amount is: \(self.total)")
-        }
-
+    func performConversion() {
         if let amount = Double(enteredAmount), amount != 0.0 {
-            if let exchange = exchangeRate {
-                convertAndDisplayTotal(exchange, amount)
+            if let rate = exchangeRate {
+                convertAndDisplayTotal(rate: rate, amount: amount)
             } else {
                 convertButton.isUserInteractionEnabled = false
                 flushExchangeRateCache(after: 3600)
@@ -192,12 +186,12 @@ extension ConvertCurrencyViewController {
                                         defer { self.convertButton.isUserInteractionEnabled = true }
                                         let rate = exchange.rate
                                         self.exchangeRateCache[self.conversionID] = rate
-                                        convertAndDisplayTotal(rate, amount)
+                                        self.convertAndDisplayTotal(rate: rate, amount: amount)
                                     } catch {
                                         // If the data request fails, get last saved exchange rate for the given conversionId
                                         if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
                                             debugLog("Converting currency using exchange rate cache")
-                                            convertAndDisplayTotal(exchange, amount)
+                                            self.convertAndDisplayTotal(rate: exchange, amount: amount)
                                         } else {
                                             self.presentAlert(title: "Error",
                                                               message: "Failed to perform conversion")
@@ -213,12 +207,18 @@ extension ConvertCurrencyViewController {
         }
     }
 
-    func performConversion(using rate: Double, amount: Double) -> Double {
+    func convertAndDisplayTotal(rate: Double, amount: Double) {
+        total = convert(using: rate, amount: amount)
+        enteredAmount = roundedTotal
+        debugLog("The total converted amount is: \(total)")
+    }
+
+    func convert(using rate: Double, amount: Double) -> Double {
         return rate * amount
     }
 
     @IBAction func convert(sender: UIButton) {
-        convertCurrency()
+        performConversion()
     }
 }
 
