@@ -180,7 +180,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         XCTAssertEqual(convertToButton.label, "Canadian Dollar")
     }
 
-
     func testCancelButton() {
         let app = XCUIApplication()
         let convertFromButton = app.buttons["ConvertFromButton"]
@@ -199,6 +198,60 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         cancelButton.tap()
 
         XCTAssertEqual(convertFromButton.label, "United States Dollar")
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+    }
+
+    func testSelectingNewCurrencyFromToCurrencyTableView() {
+        let app = XCUIApplication()
+        let convertFromButton = app.buttons["ConvertFromButton"]
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+
+        let convertToButton = app.buttons["ConvertToButton"]
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+
+        convertFromButton.tap()
+
+        let tableView = helper.toTableView
+
+        let selectedCell = tableView.cells.containing(.staticText, identifier: "Euro").firstMatch
+        let _ = selectedCell.waitForExistence(timeout: 1.0)
+        selectedCell.tap()
+
+        XCTAssertTrue(selectedCell.isSelected)
+
+        let doneButton = app.buttons["Done"].firstMatch
+        XCTAssertTrue(doneButton.isEnabled)
+
+        doneButton.tap()
+
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+        XCTAssertEqual(convertToButton.label, "Euro")
+    }
+
+    func testSelectingNewCurrencyFromFromCurrencyTableView() {
+        let app = XCUIApplication()
+        let convertFromButton = app.buttons["ConvertFromButton"]
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+
+        let convertToButton = app.buttons["ConvertToButton"]
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+
+        convertFromButton.tap()
+
+        let tableView = helper.fromTableView
+
+        let selectedCell = tableView.cells.containing(.staticText, identifier: "Ukrainian Hryvnia").firstMatch
+        let _ = selectedCell.waitForExistence(timeout: 1.0)
+        selectedCell.tap()
+
+        XCTAssertTrue(selectedCell.isSelected)
+
+        let doneButton = app.buttons["Done"].firstMatch
+        XCTAssertTrue(doneButton.isEnabled)
+
+        doneButton.tap()
+
+        XCTAssertEqual(convertFromButton.label, "Ukrainian Hryvnia")
         XCTAssertEqual(convertToButton.label, "Canadian Dollar")
     }
 }
