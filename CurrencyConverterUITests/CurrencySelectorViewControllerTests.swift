@@ -142,4 +142,63 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         XCTAssertFalse(app.buttons["Done"].firstMatch.isEnabled)
     }
 
+    func testDoneButtonDisabledIfNoCurrencySelectedInToCurrencyTableView() {
+        let app = XCUIApplication()
+        app.buttons["ConvertFromButton"].tap()
+
+        let tableView = helper.toTableView
+
+        let selectedCell = tableView.cells.containing(.staticText, identifier: "Canadian Dollar").firstMatch
+        let _ = selectedCell.waitForExistence(timeout: 1.0)
+
+        XCTAssertTrue(selectedCell.isSelected)
+
+        selectedCell.tap()
+
+        XCTAssertFalse(app.buttons["Done"].firstMatch.isEnabled)
+    }
+
+    func testDoneButton() {
+        let app = XCUIApplication()
+        let convertFromButton = app.buttons["ConvertFromButton"]
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+
+        let convertToButton = app.buttons["ConvertToButton"]
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+
+        convertFromButton.tap()
+
+        let doneButton = app.buttons["Done"].firstMatch
+        XCTAssertFalse(doneButton.isEnabled)
+        XCTAssertTrue(doneButton.waitForExistence(timeout: 1.0))
+        XCTAssertEqual(doneButton.label, "Done")
+        XCTAssertTrue(doneButton.isEnabled)
+
+        doneButton.tap()
+
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+    }
+
+
+    func testCancelButton() {
+        let app = XCUIApplication()
+        let convertFromButton = app.buttons["ConvertFromButton"]
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+
+        let convertToButton = app.buttons["ConvertToButton"]
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+
+        convertFromButton.tap()
+
+        let cancelButton = app.buttons["Cancel"]
+        XCTAssertTrue(cancelButton.exists)
+        XCTAssertEqual(cancelButton.label, "Cancel")
+        XCTAssertTrue(cancelButton.isEnabled)
+
+        cancelButton.tap()
+
+        XCTAssertEqual(convertFromButton.label, "United States Dollar")
+        XCTAssertEqual(convertToButton.label, "Canadian Dollar")
+    }
 }
