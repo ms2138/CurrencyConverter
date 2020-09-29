@@ -24,4 +24,12 @@ class CurrencySelectorViewControllerHelper {
     var toTableViewHeaderTitle: XCUIElement {
         return self.toTableView.staticTexts["To"]
     }
+
+    var convertFromButton: XCUIElement {
+        return XCUIApplication().buttons["ConvertFromButton"]
+    }
+
+    var convertToButton: XCUIElement {
+        return XCUIApplication().buttons["ConvertToButton"]
+    }
 }
