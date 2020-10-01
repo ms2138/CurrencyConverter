@@ -167,44 +167,22 @@ extension ConvertCurrencyViewController {
 extension ConvertCurrencyViewController {
     // MARK: - Currency conversion methods
 
-    func performConversion() {
-        if let amount = Double(enteredAmount), amount != 0.0 {
-            if let rate = exchangeRate {
-                convertAndDisplayTotal(rate: rate, amount: amount)
+    func performConversion(for amount: Double, data: Data) {
+        do {
+            let exchange = try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
+            let rate = exchange.rate
+            self.exchangeRateCache[self.conversionID] = rate
+            self.convertAndDisplayTotal(rate: rate, amount: amount)
+        } catch {
+            // If the data request fails, get last saved exchange rate for the given conversionId
+            if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
+                debugLog("Converting currency using exchange rate cache")
+                self.convertAndDisplayTotal(rate: exchange, amount: amount)
             } else {
-                convertButton.isUserInteractionEnabled = false
-                flushExchangeRateCache(after: 3600)
-
-                if let url = CurrencyURL().getExchangeRateURL(from: currencyConversion) {
-                    let currencyDownloader = CurrencyDataRequest(url: url)
-                    currencyDownloader.getData { [unowned self] result in
-                        DispatchQueue.main.async {
-                            switch result {
-                                case .success(let data):
-                                    do {
-                                        let exchange = try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
-                                        defer { self.convertButton.isUserInteractionEnabled = true }
-                                        let rate = exchange.rate
-                                        self.exchangeRateCache[self.conversionID] = rate
-                                        self.convertAndDisplayTotal(rate: rate, amount: amount)
-                                    } catch {
-                                        // If the data request fails, get last saved exchange rate for the given conversionId
-                                        if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
-                                            debugLog("Converting currency using exchange rate cache")
-                                            self.convertAndDisplayTotal(rate: exchange, amount: amount)
-                                        } else {
-                                            self.presentAlert(title: "Error",
-                                                              message: "Failed to perform conversion")
-                                        }
-                                }
-                                case .failure(let error):
-                                    debugLog("Error: \(error.localizedDescription)")
-                            }
-                        }
-                    }
-                }
+                debugLog("Error: \(error.localizedDescription)")
             }
         }
+
     }
 
     func convertAndDisplayTotal(rate: Double, amount: Double) {
@@ -218,7 +196,30 @@ extension ConvertCurrencyViewController {
     }
 
     @IBAction func convert(sender: UIButton) {
-        performConversion()
+        if let amount = Double(enteredAmount), amount != 0.0 {
+            if let rate = exchangeRate {
+                convertAndDisplayTotal(rate: rate, amount: amount)
+            } else {
+                convertButton.isUserInteractionEnabled = false
+                flushExchangeRateCache(after: 3600)
+
+                if let url = CurrencyURL().getExchangeRateURL(from: currencyConversion) {
+                    let currencyDownloader = CurrencyDataRequest(url: url)
+                    currencyDownloader.getData { [unowned self] result in
+                        DispatchQueue.main.async {
+                            switch result {
+                                case .success(let data):
+                                    self.performConversion(for: amount, data: data)
+                                case .failure:
+                                    self.presentAlert(title: "Error",
+                                    message: "Failed to perform conversion")
+                            }
+                            self.convertButton.isUserInteractionEnabled = true
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
