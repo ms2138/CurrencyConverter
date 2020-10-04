@@ -11,19 +11,21 @@ import XCTest
 @testable import CurrencyConverter
 
 class ConvertCurrencyViewControllerTests: XCTestCase {
-    var vc: ConvertCurrencyViewController!
+    var sut: ConvertCurrencyViewController!
 
     override func setUp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        vc = storyboard.instantiateInitialViewController() as? ConvertCurrencyViewController
-        UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = vc
+        sut = storyboard.instantiateInitialViewController() as? ConvertCurrencyViewController
+        UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = sut
     }
 
     override func tearDown() {
-        vc = nil
+        sut = nil
     }
 
     func testViewNotNil() {
-        XCTAssertNotNil(vc.view)
+        XCTAssertNotNil(sut.view)
     }
+
+    
 }
