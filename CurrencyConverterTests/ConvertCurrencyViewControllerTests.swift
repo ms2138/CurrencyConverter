@@ -59,6 +59,27 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.outputDisplayLabel.text!, String(format: "%.5f", convertedTotal))
     }
 
+    func testGetExchangeRate() {
+        let exchange = try! sut.getExchangeRate(from: data)
+
+        XCTAssertEqual(exchange.rate, 1.339965)
+    }
+
+    func testConvertButtonExists() {
+        XCTAssertNotNil(sut.convertButton!)
+    }
+
+    func testConvertButtonHasAction() {
+        let convertButton = sut.convertButton!
+
+        guard let convertAction = convertButton.actions(forTarget: sut, forControlEvent: .touchUpInside ) else {
+            XCTFail("Convert button does not have actions assigned")
+            return
+        }
+
+        XCTAssertTrue(convertAction.contains("convertWithSender:"))
+    }
+
     func loadData(forResource resource: String, extension ext: String) -> Data {
         let bundle = Bundle(for: type(of: self))
 
