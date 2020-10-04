@@ -167,9 +167,13 @@ extension ConvertCurrencyViewController {
 extension ConvertCurrencyViewController {
     // MARK: - Currency conversion methods
 
+    func getExchangeRate(from data: Data) throws -> ExchangeRate {
+        return try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
+    }
+
     func performConversion(for amount: Double, data: Data) {
         do {
-            let exchange = try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
+            let exchange = try getExchangeRate(from: data)
             let rate = exchange.rate
             self.exchangeRateCache[self.conversionID] = rate
             self.convertAndDisplayTotal(rate: rate, amount: amount)
@@ -186,12 +190,12 @@ extension ConvertCurrencyViewController {
     }
 
     func convertAndDisplayTotal(rate: Double, amount: Double) {
-        total = convert(using: rate, amount: amount)
+        total = convert(rate: rate, amount: amount)
         enteredAmount = roundedTotal
         debugLog("The total converted amount is: \(total)")
     }
 
-    func convert(using rate: Double, amount: Double) -> Double {
+    func convert(rate: Double, amount: Double) -> Double {
         return rate * amount
     }
 
