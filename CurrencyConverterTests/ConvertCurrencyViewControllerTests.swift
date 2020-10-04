@@ -39,6 +39,26 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertEqual(total, convertedTotal)
     }
 
+    func testConvertAndDisplayTotalSuccess() {
+        let exchange = try! sut.getExchangeRate(from: data)
+        let total = String(format: "%.5f", sut.convert(rate: exchange.rate, amount: 55.0))
+
+        sut.convertAndDisplayTotal(rate: exchange.rate, amount: 55.0)
+
+        XCTAssertEqual(sut.outputDisplayLabel.text!, total)
+        XCTAssertEqual(sut.enteredAmount, total)
+        XCTAssertEqual(sut.roundedTotal, total)
+    }
+
+    func testPerformConversionSuccess() {
+        let exchange = try! sut.getExchangeRate(from: data)
+        sut.performConversion(for: 55.0, data: data)
+
+        let convertedTotal = exchange.rate * 55.0
+
+        XCTAssertEqual(sut.outputDisplayLabel.text!, String(format: "%.5f", convertedTotal))
+    }
+
     func loadData(forResource resource: String, extension ext: String) -> Data {
         let bundle = Bundle(for: type(of: self))
 
