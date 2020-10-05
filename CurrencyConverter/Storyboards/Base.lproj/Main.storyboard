@@ -106,7 +106,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hZp-If-WRu">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeO-7c-4i7" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeO-7c-4i7" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="1">
@@ -130,7 +130,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E0w-rW-k19"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmM-df-EIh" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmM-df-EIh" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="138" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="2">
@@ -154,7 +154,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lub-yr-t1C"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhj-Sr-21S" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhj-Sr-21S" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="276" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="3">
@@ -183,7 +183,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-Mn-cQd">
                                                 <rect key="frame" x="0.0" y="111" width="414" height="111"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNk-Ik-Lu9" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNk-Ik-Lu9" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="4">
@@ -207,7 +207,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bOe-AC-SLS"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGo-z3-GrO" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGo-z3-GrO" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="138" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="5">
@@ -231,7 +231,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9vh-Vh-HsM"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-JY-IzT" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-JY-IzT" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="276" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="6">
@@ -260,7 +260,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="q3v-wB-zaD">
                                                 <rect key="frame" x="0.0" y="222" width="414" height="110.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-fw-ifW" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-fw-ifW" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="110.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="7">
@@ -284,7 +284,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="821-pK-lT0"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ6-0D-Lpp" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ6-0D-Lpp" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="138" y="0.0" width="138" height="110.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="8">
@@ -308,7 +308,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pDy-qr-HGP"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvj-RH-ch3" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvj-RH-ch3" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="276" y="0.0" width="138" height="110.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="9">
@@ -337,7 +337,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DvI-12-eht">
                                                 <rect key="frame" x="0.0" y="332.5" width="414" height="111"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWl-sK-97W" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWl-sK-97W" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title=".">
@@ -361,7 +361,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fdw-yM-DgK"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfa-Io-vHc" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfa-Io-vHc" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="138" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="0">
@@ -385,7 +385,7 @@
                                                             <action selector="numberKeypadTouchedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NP7-KM-Yuw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdh-ls-zLX" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
+                                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdh-ls-zLX" customClass="CustomButton" customModule="CurrencyConverter" customModuleProvider="target">
                                                         <rect key="frame" x="276" y="0.0" width="138" height="111"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                                         <state key="normal" title="C">
