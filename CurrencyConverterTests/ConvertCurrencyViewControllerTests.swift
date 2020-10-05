@@ -80,6 +80,26 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertTrue(convertAction.contains("convertWithSender:"))
     }
 
+    func testConvertToButtonExists() {
+        XCTAssertNotNil(sut.convertToButton!)
+    }
+
+    func testConvertToButtonSegue() {
+        let convertToButton = sut.convertToButton!
+
+        convertToButton.sendActions(for: .touchUpInside)
+
+        let navController = sut.presentedViewController as! UINavigationController
+        let currencySelectorViewController = navController.visibleViewController as! CurrencySelectorViewController
+
+        XCTAssertNotNil(currencySelectorViewController)
+        XCTAssertTrue(currencySelectorViewController.isKind(of: CurrencySelectorViewController.self))
+    }
+
+    func testConvertFromButtonExists() {
+        XCTAssertNotNil(sut.convertFromButton!)
+    }
+
     func loadData(forResource resource: String, extension ext: String) -> Data {
         let bundle = Bundle(for: type(of: self))
 
