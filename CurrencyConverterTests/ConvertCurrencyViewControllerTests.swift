@@ -100,6 +100,33 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.convertFromButton!)
     }
 
+    func testConvertFromButtonSegue() {
+        let convertFromButton = sut.convertFromButton!
+
+        convertFromButton.sendActions(for: .touchUpInside)
+
+        let navController = sut.presentedViewController as! UINavigationController
+        let currencySelectorViewController = navController.visibleViewController as! CurrencySelectorViewController
+
+        XCTAssertNotNil(currencySelectorViewController)
+        XCTAssertTrue(currencySelectorViewController.isKind(of: CurrencySelectorViewController.self))
+    }
+
+    func testSwitchConversionButtonExists() {
+        XCTAssertNotNil(sut.switchConversionButton!)
+    }
+
+    func testSwitchConversionButtonHasAction() {
+        let switchConversionButton = sut.switchConversionButton!
+
+        guard let switchAction = switchConversionButton.actions(forTarget: sut, forControlEvent: .touchUpInside ) else {
+            XCTFail("Switch conversion button does not have actions assigned")
+            return
+        }
+
+        XCTAssertTrue(switchAction.contains("switchConversionDirectionWithSender:"))
+    }
+
     func loadData(forResource resource: String, extension ext: String) -> Data {
         let bundle = Bundle(for: type(of: self))
 
