@@ -154,6 +154,32 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         }
     }
 
+    func testClearButtonHasAction() {
+        if let clearButton = sut.view.viewWithTag(12) as? UIButton {
+            guard let clearButtonAction = clearButton.actions(forTarget: sut, forControlEvent: .touchUpInside ) else {
+                XCTFail("Clear button does not have actions assigned")
+                return
+            }
+
+            XCTAssertTrue(clearButtonAction.contains("clearButtonTouchedWithSender:"))
+        }
+    }
+
+    func testClearAllSuccess() {
+        let exchange = try! sut.getExchangeRate(from: data)
+        sut.performConversion(for: 55.0, data: data)
+
+        let convertedTotal = exchange.rate * 55.0
+
+        XCTAssertEqual(sut.outputDisplayLabel.text!, String(format: "%.5f", convertedTotal))
+
+        sut.clearAll()
+
+        XCTAssertEqual(sut.outputDisplayLabel.text!, "0")
+        XCTAssertEqual(sut.total, 0.0)
+        XCTAssertEqual(sut.enteredAmount, "")
+    }
+
     func loadData(forResource resource: String, extension ext: String) -> Data {
         let bundle = Bundle(for: type(of: self))
 
