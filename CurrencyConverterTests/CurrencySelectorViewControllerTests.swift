@@ -23,4 +23,16 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     override func tearDown() {
         sut = nil
     }
+
+    func testViewNotNil() {
+        XCTAssertNotNil(sut.view)
+    }
+
+    func testCurrenciesExits() {
+        XCTAssertNotNil(sut.currencies)
+    }
+
+    func testForCurrencies() {
+        XCTAssertNotEqual(sut.currencies.count, 0)
+    }
 }
