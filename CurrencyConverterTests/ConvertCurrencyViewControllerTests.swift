@@ -66,7 +66,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testConvertButtonExists() {
-        XCTAssertNotNil(sut.convertButton!)
+        XCTAssertNotNil(sut.convertButton)
     }
 
     func testConvertButtonHasAction() {
@@ -81,7 +81,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testConvertToButtonExists() {
-        XCTAssertNotNil(sut.convertToButton!)
+        XCTAssertNotNil(sut.convertToButton)
     }
 
     func testConvertToButtonSegue() {
@@ -97,7 +97,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testConvertFromButtonExists() {
-        XCTAssertNotNil(sut.convertFromButton!)
+        XCTAssertNotNil(sut.convertFromButton)
     }
 
     func testConvertFromButtonSegue() {
@@ -113,7 +113,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testSwitchConversionButtonExists() {
-        XCTAssertNotNil(sut.switchConversionButton!)
+        XCTAssertNotNil(sut.switchConversionButton)
     }
 
     func testSwitchConversionButtonHasAction() {
