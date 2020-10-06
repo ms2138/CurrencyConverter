@@ -11,12 +11,16 @@ import XCTest
 @testable import CurrencyConverter
 
 class CurrencySelectorViewControllerTests: XCTestCase {
+    var sut: CurrencySelectorViewController!
 
     override func setUp() {
-        
+        let storyboard = UIStoryboard(name: "CurrencySelector", bundle: nil)
+        let nc = storyboard.instantiateInitialViewController() as! UINavigationController
+        sut = nc.viewControllers[0] as? CurrencySelectorViewController
+        UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = sut
     }
 
     override func tearDown() {
-
+        sut = nil
     }
 }
