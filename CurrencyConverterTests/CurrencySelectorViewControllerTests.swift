@@ -35,4 +35,24 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     func testForCurrencies() {
         XCTAssertNotEqual(sut.currencies.count, 0)
     }
+
+    func testConvertToTableViewExists() {
+        XCTAssertNotNil(sut.toCurrencyTableView)
+    }
+
+    func testConvertFromTableViewExists() {
+        XCTAssertNotNil(sut.fromCurrencyTableView)
+    }
+
+    func testCancelBarButtonItemExists() {
+        let cancelButton = sut.navigationItem.leftBarButtonItem!
+
+        XCTAssertNotNil(cancelButton)
+    }
+
+    func testDoneBarButtonItemExists() {
+        let doneButton = sut.navigationItem.rightBarButtonItem!
+
+        XCTAssertNotNil(doneButton)
+    }
 }
