@@ -77,4 +77,20 @@ class CurrencySelectorViewControllerTests: XCTestCase {
 
         XCTAssertEqual(doneAction, #selector(CurrencySelectorViewController.done(sender:)))
     }
+
+    func testConvertToTableViewTitleIsSet() {
+        let toCurrencyTableView = sut.toCurrencyTableView!
+
+        if let title = sut.tableView(toCurrencyTableView, titleForHeaderInSection: 0) {
+            XCTAssertEqual(title, "To")
+        }
+    }
+
+    func testConvertFromTableViewTitleIsSet() {
+        let fromCurrencyTableView = sut.fromCurrencyTableView!
+
+        if let title = sut.tableView(fromCurrencyTableView, titleForHeaderInSection: 0) {
+            XCTAssertEqual(title, "From")
+        }
+    }
 }

@@ -21,6 +21,7 @@
 		3CC427F42521A08100611294 /* CurrencySelectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F32521A08100611294 /* CurrencySelectorViewControllerTests.swift */; };
 		3CC427F62521A10200611294 /* CurrencySelectorViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F52521A10200611294 /* CurrencySelectorViewControllerHelper.swift */; };
 		3CC427F82522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F72522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift */; };
+		3CC427FA252AC47100611294 /* CurrencySelectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F9252AC47100611294 /* CurrencySelectorViewControllerTests.swift */; };
 		3CDFD7B124D7B52F0015A2CC /* ConvertCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */; };
 		3CDFD7B624D7B7840015A2CC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B524D7B7840015A2CC /* Currency.swift */; };
 		3CDFD7B924D7B7E70015A2CC /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */; };
@@ -81,6 +82,7 @@
 		3CC427F32521A08100611294 /* CurrencySelectorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewControllerTests.swift; sourceTree = "<group>"; };
 		3CC427F52521A10200611294 /* CurrencySelectorViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewControllerHelper.swift; sourceTree = "<group>"; };
 		3CC427F72522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewControllerTests.swift; sourceTree = "<group>"; };
+		3CC427F9252AC47100611294 /* CurrencySelectorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewControllerTests.swift; sourceTree = "<group>"; };
 		3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewController.swift; sourceTree = "<group>"; };
 		3CDFD7B524D7B7840015A2CC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				3CC427D3251C4A6B00611294 /* CurrencyStorageManagerTests.swift */,
 				3CC427D5251C4F5700611294 /* CurrencyDataDecoderTests.swift */,
 				3CC427F72522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift */,
+				3CC427F9252AC47100611294 /* CurrencySelectorViewControllerTests.swift */,
 			);
 			path = CurrencyConverterTests;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			files = (
 				3CC427F82522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */,
 				3CC427D4251C4A6B00611294 /* CurrencyStorageManagerTests.swift in Sources */,
+				3CC427FA252AC47100611294 /* CurrencySelectorViewControllerTests.swift in Sources */,
 				3CC427D6251C4F5700611294 /* CurrencyDataDecoderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
