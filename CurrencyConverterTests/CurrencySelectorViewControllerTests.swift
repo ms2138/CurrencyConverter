@@ -55,4 +55,26 @@ class CurrencySelectorViewControllerTests: XCTestCase {
 
         XCTAssertNotNil(doneButton)
     }
+
+    func testCancelBarButtonItemHasAction() {
+        let cancelButton = sut.navigationItem.leftBarButtonItem!
+
+        guard let cancelAction = cancelButton.action else {
+            XCTFail("Cancel bar button item does not have actions assigned")
+            return
+        }
+
+        XCTAssertEqual(cancelAction, #selector(CurrencySelectorViewController.cancel(sender:)))
+    }
+
+    func testDoneBarButtonItemHasAction() {
+        let doneButton = sut.navigationItem.rightBarButtonItem!
+
+        guard let doneAction = doneButton.action else {
+            XCTFail("Done bar button item does not have actions assigned")
+            return
+        }
+
+        XCTAssertEqual(doneAction, #selector(CurrencySelectorViewController.done(sender:)))
+    }
 }
