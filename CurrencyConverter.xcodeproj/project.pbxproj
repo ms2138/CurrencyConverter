@@ -22,6 +22,7 @@
 		3CC427F62521A10200611294 /* CurrencySelectorViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F52521A10200611294 /* CurrencySelectorViewControllerHelper.swift */; };
 		3CC427F82522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F72522F7BA00611294 /* ConvertCurrencyViewControllerTests.swift */; };
 		3CC427FA252AC47100611294 /* CurrencySelectorViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427F9252AC47100611294 /* CurrencySelectorViewControllerTests.swift */; };
+		3CC4280A252D756E00611294 /* CurrencyConvertDataRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC42809252D756E00611294 /* CurrencyConvertDataRequestTests.swift */; };
 		3CDFD7B124D7B52F0015A2CC /* ConvertCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */; };
 		3CDFD7B624D7B7840015A2CC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B524D7B7840015A2CC /* Currency.swift */; };
 		3CDFD7B924D7B7E70015A2CC /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */; };
@@ -92,6 +93,7 @@
 		3CC427F9252AC47100611294 /* CurrencySelectorViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewControllerTests.swift; sourceTree = "<group>"; };
 		3CC427FF252D731800611294 /* CurrencyConverterAsyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterAsyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC42803252D731800611294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CC42809252D756E00611294 /* CurrencyConvertDataRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertDataRequestTests.swift; sourceTree = "<group>"; };
 		3CDFD7B024D7B52F0015A2CC /* ConvertCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrencyViewController.swift; sourceTree = "<group>"; };
 		3CDFD7B524D7B7840015A2CC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		3CDFD7B824D7B7E70015A2CC /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				3CC42803252D731800611294 /* Info.plist */,
+				3CC42809252D756E00611294 /* CurrencyConvertDataRequestTests.swift */,
 			);
 			path = CurrencyConverterAsyncTests;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 					};
 					3CC427FE252D731800611294 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 844039AB24D7B1940073302F;
 					};
 					844039AB24D7B1940073302F = {
@@ -525,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC4280A252D756E00611294 /* CurrencyConvertDataRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +687,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CurrencyConverterAsyncTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -691,6 +697,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.CurrencyConverterAsyncTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyConverter.app/CurrencyConverter";
@@ -701,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CurrencyConverterAsyncTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
