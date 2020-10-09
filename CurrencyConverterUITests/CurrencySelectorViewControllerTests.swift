@@ -23,7 +23,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testFromCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         XCTAssertTrue(helper.fromTableView.exists)
@@ -32,7 +31,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testToCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         XCTAssertTrue(helper.toTableView.exists)
@@ -41,7 +39,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testCurrenciesInFromCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         let tableView = helper.fromTableView
@@ -49,7 +46,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testCurrenciesInToCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         let tableView = helper.toTableView
@@ -57,7 +53,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testSelectedCurrencyInFromCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         let tableView = helper.fromTableView
