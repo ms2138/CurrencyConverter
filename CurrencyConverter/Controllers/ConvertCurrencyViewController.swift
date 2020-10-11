@@ -84,7 +84,6 @@ extension ConvertCurrencyViewController {
         let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
 
         if (currencyStorageManager.savedFileExists == false) {
-            AppDefaults().selectedCurrencyConversion = currencyConversion
 
             self.loadCurrencies {
                 [unowned self] in
