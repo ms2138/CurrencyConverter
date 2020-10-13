@@ -130,8 +130,8 @@ extension ConvertCurrencyViewController {
     // MARK: - Exchange/Currency methods
 
     private func flushExchangeRateCache(after seconds: TimeInterval) {
-        if let timeStamp = appDefaults.exchangeRateCacheTimestamp {
-            if (Date().timeIntervalSince(timeStamp) >= seconds) {
+        if let timestamp = appDefaults.exchangeRateCacheTimestamp {
+            if (Date().timeIntervalSince(timestamp) >= seconds) {
                 exchangeRateCache.removeAll()
                 appDefaults.exchangeRateCacheTimestamp = Date()
             }
