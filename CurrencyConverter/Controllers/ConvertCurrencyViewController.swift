@@ -17,6 +17,7 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable, Currenc
     @IBOutlet weak var switchConversionButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
     fileprivate var exchangeRateCache = [String: Double]()
+    var appDefaults = AppDefaults()
     var total = 0.0
     var roundedTotal: String {
         return String(format: "%.5f", total)
@@ -117,10 +118,10 @@ extension ConvertCurrencyViewController {
 
 extension ConvertCurrencyViewController {
     @objc func saveDefaults() {
-        AppDefaults().selectedCurrencyConversion = currencyConversion
+        appDefaults.selectedCurrencyConversion = currencyConversion
         if (exchangeRateCache.count > 0) {
             debugLog("Saving exchange rate cache to user defaults - \(exchangeRateCache)")
-            AppDefaults().exchangeRateCache = exchangeRateCache
+            appDefaults.exchangeRateCache = exchangeRateCache
         }
     }
 }
@@ -129,7 +130,6 @@ extension ConvertCurrencyViewController {
     // MARK: - Exchange/Currency methods
 
     private func flushExchangeRateCache(after seconds: TimeInterval) {
-        let appDefaults = AppDefaults()
         if let timeStamp = appDefaults.exchangeRateCacheTimestamp {
             if (Date().timeIntervalSince(timeStamp) >= seconds) {
                 exchangeRateCache.removeAll()
@@ -178,7 +178,7 @@ extension ConvertCurrencyViewController {
             self.convertAndDisplayTotal(rate: rate, amount: amount)
         } catch {
             // If the data request fails, get last saved exchange rate for the given conversionId
-            if let cache = AppDefaults().exchangeRateCache, let exchange = cache[self.conversionID] {
+            if let cache = appDefaults.exchangeRateCache, let exchange = cache[self.conversionID] {
                 debugLog("Converting currency using exchange rate cache")
                 self.convertAndDisplayTotal(rate: exchange, amount: amount)
             } else {
