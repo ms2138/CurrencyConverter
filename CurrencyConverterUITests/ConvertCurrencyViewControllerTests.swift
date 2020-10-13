@@ -20,6 +20,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     override func tearDown() {
+        helper = nil
     }
 
     func testIntialOutputDisplayLabelText() {

@@ -20,6 +20,7 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     override func tearDown() {
+        helper = nil
     }
 
     func testFromCurrencyTableView() {
