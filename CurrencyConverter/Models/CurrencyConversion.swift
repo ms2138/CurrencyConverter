@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct CurrencyConversion: Codable {
+struct CurrencyConversion: Codable, Equatable {
     var from: Currency
     var to: Currency
+
+    static func == (lhs: CurrencyConversion, rhs: CurrencyConversion) -> Bool {
+        return lhs.from.id == rhs.from.id && lhs.to.id == rhs.to.id
+    }
 }
