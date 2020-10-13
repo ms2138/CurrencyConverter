@@ -9,9 +9,8 @@
 import Foundation
 
 class AppDefaults {
-    var defaults: UserDefaults {
-        return UserDefaults.standard
-    }
+    var defaults: UserDefaults = UserDefaults.standard
+    
     var exchangeRateCache: [String: Double]? {
         get {
             return defaults.value(forKey: Constants.exchangeRateCache) as? [String: Double]
