@@ -24,6 +24,8 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        let fileManager = FileManager.default
+        try? fileManager.removeItem(at: fileManager.pathToFile(filename: "currencies.json"))
     }
 
     func testViewNotNil() {
