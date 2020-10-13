@@ -198,7 +198,7 @@ extension ConvertCurrencyViewController {
         return rate * amount
     }
 
-    @IBAction func convert(sender: UIButton) {
+    @IBAction func startConverting(sender: UIButton) {
         if let amount = Double(enteredAmount), amount != 0.0 {
             if let rate = exchangeRate {
                 convertAndDisplayTotal(rate: rate, amount: amount)
