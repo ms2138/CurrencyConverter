@@ -105,18 +105,18 @@ extension ConvertCurrencyViewController {
 
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(save),
+                                               selector: #selector(saveDefaults),
                                                name: UIApplication.willTerminateNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(save),
+                                               selector: #selector(saveDefaults),
                                                name: UIApplication.didEnterBackgroundNotification,
                                                object: nil)
     }
 }
 
 extension ConvertCurrencyViewController {
-    @objc func save() {
+    @objc func saveDefaults() {
         AppDefaults().selectedCurrencyConversion = currencyConversion
         if (exchangeRateCache.count > 0) {
             debugLog("Saving exchange rate cache to user defaults - \(exchangeRateCache)")
