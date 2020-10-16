@@ -82,6 +82,10 @@ extension ConvertCurrencyViewController {
         UIButton.appearance().isExclusiveTouch = true
         setConversionButtonsTitle(currencyConversion)
 
+        if let cache = AppDefaults().exchangeRateCache {
+            exchangeRateCache = cache
+        }
+
         let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
 
         if (currencyStorageManager.savedFileExists == false) {
@@ -166,59 +170,35 @@ extension ConvertCurrencyViewController {
 extension ConvertCurrencyViewController {
     // MARK: - Currency conversion methods
 
-    func getExchangeRate(from data: Data) throws -> ExchangeRate {
-        return try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
-    }
-
-    func performConversion(for amount: Double, data: Data) {
-        do {
-            let exchange = try getExchangeRate(from: data)
-            let rate = exchange.rate
-            self.exchangeRateCache[self.conversionID] = rate
-            self.convertAndDisplayTotal(rate: rate, amount: amount)
-        } catch {
-            // If the data request fails, get last saved exchange rate for the given conversionId
-            if let cache = appDefaults.exchangeRateCache, let exchange = cache[self.conversionID] {
-                debugLog("Converting currency using exchange rate cache")
-                self.convertAndDisplayTotal(rate: exchange, amount: amount)
-            } else {
-                debugLog("Error: \(error.localizedDescription)")
-            }
-        }
-
-    }
-
-    func convertAndDisplayTotal(rate: Double, amount: Double) {
-        total = convert(rate: rate, amount: amount)
-        enteredAmount = roundedTotal
-        debugLog("The total converted amount is: \(total)")
-    }
-
-    func convert(rate: Double, amount: Double) -> Double {
-        return rate * amount
-    }
-
     @IBAction func startConverting(sender: UIButton) {
         if let amount = Double(enteredAmount), amount != 0.0 {
+            let converter = CurrencyConverter(amount: amount)
+            flushExchangeRateCache(after: 3600)
+
             if let rate = exchangeRate {
-                convertAndDisplayTotal(rate: rate, amount: amount)
+                // Use the exchange rate cache to prevent conversion from hitting the server
+                debugLog("Converting currency using exchange rate cache")
+                total = converter.convert(rate: rate)
+                self.outputDisplayLabel.text = roundedTotal
+                debugLog("The total converted amount is: \(total)")
             } else {
                 convertButton.isUserInteractionEnabled = false
-                flushExchangeRateCache(after: 3600)
 
                 if let url = CurrencyURL().getExchangeRateURL(from: currencyConversion) {
-                    let currencyDownloader = CurrencyDataRequest(url: url)
-                    currencyDownloader.getData { [unowned self] result in
-                        DispatchQueue.main.async {
-                            switch result {
-                                case .success(let data):
-                                    self.performConversion(for: amount, data: data)
-                                case .failure:
-                                    self.presentAlert(title: "Error",
-                                    message: "Failed to perform conversion")
-                            }
-                            self.convertButton.isUserInteractionEnabled = true
+                    let request = CurrencyDataRequest(url: url)
+                    converter.performConversion(for: request) {
+                        [unowned self] result in
+                        switch result {
+                            case .success(let (total, exchange)):
+                                self.total = total
+                                self.outputDisplayLabel.text = self.roundedTotal
+                                self.exchangeRateCache[self.conversionID] = exchange.rate
+                            case .failure(let error):
+                                self.presentAlert(title: "Error",
+                                                  message: "Failed to perform conversion")
+                                debugLog("Error: \(error.localizedDescription)")
                         }
+                        self.convertButton.isUserInteractionEnabled = true
                     }
                 }
             }
