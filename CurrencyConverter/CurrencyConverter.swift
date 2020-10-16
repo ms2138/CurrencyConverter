@@ -9,5 +9,17 @@
 import Foundation
 
 class CurrencyConverter {
+    var amount: Double
 
+    init(amount: Double) {
+        self.amount = amount
+    }
+
+    func getExchangeRate(from data: Data) throws -> ExchangeRate {
+        return try CurrencyDataDecoder(data: data).decode(type: ExchangeRate.self)
+    }
+
+    func convert(rate: Double) -> Double {
+        return rate * amount
+    }
 }
