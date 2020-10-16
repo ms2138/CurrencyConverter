@@ -32,41 +32,6 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.view)
     }
 
-    func testConvertSuccess() {
-        let exchange = try! sut.getExchangeRate(from: data)
-        let total = sut.convert(rate: exchange.rate, amount: 55.0)
-
-        let convertedTotal = exchange.rate * 55.0
-
-        XCTAssertEqual(total, convertedTotal)
-    }
-
-    func testConvertAndDisplayTotalSuccess() {
-        let exchange = try! sut.getExchangeRate(from: data)
-        let total = String(format: "%.5f", sut.convert(rate: exchange.rate, amount: 55.0))
-
-        sut.convertAndDisplayTotal(rate: exchange.rate, amount: 55.0)
-
-        XCTAssertEqual(sut.outputDisplayLabel.text!, total)
-        XCTAssertEqual(sut.enteredAmount, total)
-        XCTAssertEqual(sut.roundedTotal, total)
-    }
-
-    func testPerformConversionSuccess() {
-        let exchange = try! sut.getExchangeRate(from: data)
-        sut.performConversion(for: 55.0, data: data)
-
-        let convertedTotal = exchange.rate * 55.0
-
-        XCTAssertEqual(sut.outputDisplayLabel.text!, String(format: "%.5f", convertedTotal))
-    }
-
-    func testGetExchangeRate() {
-        let exchange = try! sut.getExchangeRate(from: data)
-
-        XCTAssertEqual(exchange.rate, 1.339965)
-    }
-
     func testConvertButtonExists() {
         XCTAssertNotNil(sut.convertButton)
     }
@@ -168,12 +133,12 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testClearAllSuccess() {
-        let exchange = try! sut.getExchangeRate(from: data)
-        sut.performConversion(for: 55.0, data: data)
+        let testString = "70.49383"
+        sut.outputDisplayLabel.text = testString
+        sut.total = 70.49383
+        sut.enteredAmount = testString
 
-        let convertedTotal = exchange.rate * 55.0
-
-        XCTAssertEqual(sut.outputDisplayLabel.text!, String(format: "%.5f", convertedTotal))
+        XCTAssertEqual(sut.outputDisplayLabel.text!, testString)
 
         sut.clearAll()
 
