@@ -12,14 +12,11 @@ import XCTest
 
 class ConvertCurrencyViewControllerTests: XCTestCase {
     var sut: ConvertCurrencyViewController!
-    var data: Data!
     
     override func setUp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateInitialViewController() as? ConvertCurrencyViewController
         UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = sut
-
-        data = loadData(forResource: "exchangeRate", extension: "json")
     }
 
     override func tearDown() {
@@ -145,12 +142,5 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.outputDisplayLabel.text!, "0")
         XCTAssertEqual(sut.total, 0.0)
         XCTAssertEqual(sut.enteredAmount, "")
-    }
-
-    func loadData(forResource resource: String, extension ext: String) -> Data {
-        let bundle = Bundle(for: type(of: self))
-
-        let path = bundle.url(forResource: resource, withExtension: ext)!
-        return try! Data(contentsOf: path)
     }
 }
