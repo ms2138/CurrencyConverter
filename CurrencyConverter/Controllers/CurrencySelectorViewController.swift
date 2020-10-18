@@ -223,9 +223,8 @@ extension CurrencySelectorViewController {
             let toCurrency = currencies[toCurrencyIndexPath.row]
             let currencyConvert = CurrencyConversion(from: fromCurrency, to: toCurrency)
 
-            if (handler != nil) {
-                handler!(currencyConvert)
-            }
+            handler?(currencyConvert)
+
             cancel(sender: sender)
         }
     }
