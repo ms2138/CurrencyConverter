@@ -11,9 +11,7 @@ import XCTest
 @testable import CurrencyConverter
 
 class CurrencyDataDecoderTests: XCTestCase {
-
     override func setUp() {
-
     }
 
     override func tearDown() {
@@ -21,7 +19,7 @@ class CurrencyDataDecoderTests: XCTestCase {
     }
 
     func testCurrenciesDecodingSuccess() {
-        let data = loadData(forResource: "exchangeRate", extension: "json")
+        let data = loadData(forResource: "currencies", extension: "json")
         let currencyDataDecoder = CurrencyDataDecoder(data: data)
 
         let currencies = try! currencyDataDecoder.decode(type: CurrencyList.self).currencies
