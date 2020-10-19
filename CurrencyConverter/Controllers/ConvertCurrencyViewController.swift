@@ -35,6 +35,7 @@ class ConvertCurrencyViewController: UIViewController, AlertPresentable, Currenc
         return AppDefaults().selectedCurrencyConversion
         }() {
         willSet {
+            appDefaults.selectedCurrencyConversion = newValue
             setConversionButtonsTitle(newValue)
         }
     }
@@ -82,7 +83,7 @@ extension ConvertCurrencyViewController {
         UIButton.appearance().isExclusiveTouch = true
         setConversionButtonsTitle(currencyConversion)
 
-        if let cache = AppDefaults().exchangeRateCache {
+        if let cache = appDefaults.exchangeRateCache {
             exchangeRateCache = cache
         }
 
@@ -122,7 +123,6 @@ extension ConvertCurrencyViewController {
 
 extension ConvertCurrencyViewController {
     @objc func saveDefaults() {
-        appDefaults.selectedCurrencyConversion = currencyConversion
         if (exchangeRateCache.count > 0) {
             debugLog("Saving exchange rate cache to user defaults - \(exchangeRateCache)")
             appDefaults.exchangeRateCache = exchangeRateCache
