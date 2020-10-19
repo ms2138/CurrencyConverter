@@ -12,17 +12,24 @@ import XCTest
 
 class ConvertCurrencyViewControllerTests: XCTestCase {
     var sut: ConvertCurrencyViewController!
-    
+    var appDefaults: AppDefaults!
+
     override func setUp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateInitialViewController() as? ConvertCurrencyViewController
         UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = sut
+
+        appDefaults = AppDefaults()
+        appDefaults.defaults = UserDefaults.testingDefaults
+        sut.appDefaults = appDefaults
     }
 
     override func tearDown() {
         sut = nil
         let fileManager = FileManager.default
         try? fileManager.removeItem(at: fileManager.pathToFile(filename: "currencies.json"))
+
+        UserDefaults.resetDefaults()
     }
 
     func testViewNotNil() {
@@ -142,5 +149,23 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.outputDisplayLabel.text!, "0")
         XCTAssertEqual(sut.total, 0.0)
         XCTAssertEqual(sut.enteredAmount, "")
+    }
+
+    func testChangingCurrencyConversion() {
+        let fromCurrency = Currency.init(name: "United States Dollar", symbol: "$", id: "USD")
+        let toCurrency = Currency.init(name: "Canadian Dollar", symbol: "$", id: "CAD")
+        let oldConversion = CurrencyConversion.init(from: fromCurrency, to: toCurrency)
+
+        XCTAssertEqual(sut.currencyConversion, oldConversion)
+        XCTAssertEqual(sut.currencyConversion, appDefaults.selectedCurrencyConversion)
+
+        let newFromCurrency = Currency.init(name: "Ukrainian Hryvnia", symbol: "₴", id: "UAH")
+        let newConversion = CurrencyConversion.init(from: newFromCurrency, to: toCurrency)
+
+        sut.currencyConversion = newConversion
+        appDefaults.selectedCurrencyConversion = newConversion
+
+        XCTAssertEqual(sut.currencyConversion, newConversion)
+        XCTAssertEqual(sut.currencyConversion, appDefaults.selectedCurrencyConversion)
     }
 }
