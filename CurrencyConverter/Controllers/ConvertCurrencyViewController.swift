@@ -96,10 +96,7 @@ extension ConvertCurrencyViewController {
                 if (self.currencies.count > 0) {
                     currencyStorageManager.save(currencies: self.currencies)
                 } else {
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: "Error",
-                                          message: "Failed to load currencies")
-                    }
+                    debugLog("Failed to load currencies")
                 }
             }
         } else {
