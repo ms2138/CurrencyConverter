@@ -25,4 +25,12 @@ class CurrencyConverterTests: XCTestCase {
 
         XCTAssertEqual(total, 49.0 * 1.3933)
     }
+
+    func testGetExchangeRate() {
+        let data = TestHelper().loadData(forResource: "exchangeRate", extension: "json")
+
+        let exchangeRate = try! converter.getExchangeRate(from: data)
+
+        XCTAssertEqual(exchangeRate.rate, 1.339965)
+    }
 }
