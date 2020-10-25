@@ -15,10 +15,10 @@ enum Result<Value, Error: Swift.Error> {
 
 class CurrencyDataRequest {
     private let url: URL
-    private let session: URLSession
+    private let session: URLSessionProtocol
     private var dataTask: URLSessionDataTask?
 
-    init(url: URL, session: URLSession = .shared) {
+    init(url: URL, session: URLSessionProtocol = URLSession.shared) {
         self.url = url
         self.session = session
     }
