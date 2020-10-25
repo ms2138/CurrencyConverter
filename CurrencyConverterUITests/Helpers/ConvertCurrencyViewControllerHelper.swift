@@ -24,4 +24,8 @@ class ConvertCurrencyViewControllerHelper {
     var convertToButton: XCUIElement {
         return XCUIApplication().buttons["ConvertToButton"]
     }
+
+    var convertButton: XCUIElement {
+        return XCUIApplication().buttons["ConvertButton"]
+    }
 }

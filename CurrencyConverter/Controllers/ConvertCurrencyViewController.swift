@@ -72,6 +72,7 @@ extension ConvertCurrencyViewController {
         exchangeRateDisplayLabel.accessibilityIdentifier = AccessibilityIdentifier.exchangeRateDisplayLabel.rawValue
         convertFromButton.accessibilityIdentifier = AccessibilityIdentifier.convertFromButton.rawValue
         convertToButton.accessibilityIdentifier = AccessibilityIdentifier.convertToButton.rawValue
+        convertButton.accessibilityIdentifier = AccessibilityIdentifier.convertButton.rawValue
     }
 }
 
