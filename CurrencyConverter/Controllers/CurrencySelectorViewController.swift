@@ -51,6 +51,7 @@ extension CurrencySelectorViewController {
     // MARK: - Currency setup method
 
     fileprivate func setup() {
+        updateCurrencies(after: TimeInterval(26298000))
         let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
 
         if (currencyStorageManager.savedFileExists == false) {
@@ -88,6 +89,28 @@ extension CurrencySelectorViewController {
                     tableView(toCurrencyTableView, didSelectRowAt: toIndexPath)
                 }
             }
+        }
+    }
+
+    fileprivate func updateCurrencies(after seconds: TimeInterval) {
+        do {
+            let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath:
+                currencyStorageManager.pathToSavedCurrencies.path) as NSDictionary
+            if let creationDate = fileAttributes.fileCreationDate() {
+                if (Date().timeIntervalSince(creationDate) >= seconds) {
+                    loadCurrencies {
+                        [unowned self] in
+                        if (self.currencies.count > 0) {
+                            currencyStorageManager.save(currencies: self.currencies)
+                        }
+                    }
+                } else {
+                    debugLog("Time interval not met.  Currency update will not proceed.")
+                }
+            }
+        } catch {
+            debugLog("Failed to update currencies")
         }
     }
 }
