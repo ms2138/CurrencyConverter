@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ConvertCurrencyViewController: UIViewController, AlertPresentable, CurrencyDataController {
-    var currencies = [Currency]()
+class ConvertCurrencyViewController: UIViewController, AlertPresentable {
     @IBOutlet weak var outputDisplayLabel: UILabel!
     @IBOutlet weak var exchangeRateDisplayLabel: UILabel!
     @IBOutlet weak var convertFromButton: UIButton!
@@ -80,30 +79,11 @@ extension ConvertCurrencyViewController {
     // MARK: Setup methods
 
     private func setup() {
-        updateCurrencies(after: TimeInterval(26298000))
         UIButton.appearance().isExclusiveTouch = true
         setConversionButtonsTitle(currencyConversion)
 
         if let cache = appDefaults.exchangeRateCache {
             exchangeRateCache = cache
-        }
-
-        let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
-
-        if (currencyStorageManager.savedFileExists == false) {
-
-            self.loadCurrencies {
-                [unowned self] in
-                if (self.currencies.count > 0) {
-                    currencyStorageManager.save(currencies: self.currencies)
-                } else {
-                    debugLog("Failed to load currencies")
-                }
-            }
-        } else {
-            if let theCurrencies = currencyStorageManager.read() {
-                currencies = theCurrencies
-            }
         }
     }
 
@@ -139,28 +119,6 @@ extension ConvertCurrencyViewController {
             }
         } else {
             appDefaults.exchangeRateCacheTimestamp = Date()
-        }
-    }
-
-    private func updateCurrencies(after seconds: TimeInterval) {
-        do {
-            let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
-            let fileAttributes = try FileManager.default.attributesOfItem(atPath:
-                currencyStorageManager.pathToSavedCurrencies.path) as NSDictionary
-            if let creationDate = fileAttributes.fileCreationDate() {
-                if (Date().timeIntervalSince(creationDate) >= seconds) {
-                    loadCurrencies {
-                        [unowned self] in
-                        if (self.currencies.count > 0) {
-                            currencyStorageManager.save(currencies: self.currencies)
-                        }
-                    }
-                } else {
-                    debugLog("Time interval not met.  Currency update will not proceed.")
-                }
-            }
-        } catch {
-            debugLog("Failed to update currencies")
         }
     }
 }
