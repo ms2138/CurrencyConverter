@@ -169,8 +169,7 @@
 			children = (
 				3CC4281A254279F400611294 /* Mocks */,
 				3CC4280B25355AE900611294 /* Helpers */,
-				3CC427D7251C4FFC00611294 /* currencies.json */,
-				3CC427D9251C54B200611294 /* exchangeRate.json */,
+				3CC4281C2547CE5500611294 /* Test Data */,
 				3CC427CD251C3E2900611294 /* Info.plist */,
 				3CC427D3251C4A6B00611294 /* CurrencyStorageManagerTests.swift */,
 				3CC427D5251C4F5700611294 /* CurrencyDataDecoderTests.swift */,
@@ -241,6 +240,15 @@
 				3CC4281625412EC500611294 /* URLSessionProtocol.swift */,
 			);
 			path = Testing;
+			sourceTree = "<group>";
+		};
+		3CC4281C2547CE5500611294 /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				3CC427D7251C4FFC00611294 /* currencies.json */,
+				3CC427D9251C54B200611294 /* exchangeRate.json */,
+			);
+			path = "Test Data";
 			sourceTree = "<group>";
 		};
 		3CDFD7B224D7B5390015A2CC /* Controllers */ = {
