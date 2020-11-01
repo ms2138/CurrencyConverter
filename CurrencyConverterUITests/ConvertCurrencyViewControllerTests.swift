@@ -10,13 +10,15 @@ import XCTest
 
 class ConvertCurrencyViewControllerTests: XCTestCase {
     var helper: ConvertCurrencyViewControllerHelper!
+    var app: XCUIApplication!
 
     override func setUp() {
+        app = XCUIApplication()
+        app.launchArguments += ["-UITesting", "true"]
+
         helper = ConvertCurrencyViewControllerHelper()
 
         continueAfterFailure = false
-
-        XCUIApplication().launch()
     }
 
     override func tearDown() {
@@ -24,13 +26,15 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testIntialOutputDisplayLabelText() {
+        app.launch()
+
         let displayLabel = helper.outputDisplayLabel
         XCTAssertTrue(displayLabel.exists)
         XCTAssertEqual(displayLabel.label, "0")
     }
 
     func testNumberPad() {
-        let app = XCUIApplication()
+        app.launch()
 
         let displayLabel = helper.outputDisplayLabel
 
@@ -51,7 +55,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testClearOutputDisplay() {
-        let app = XCUIApplication()
+        app.launch()
 
         let displayLabel = helper.outputDisplayLabel
         XCTAssertEqual(displayLabel.label, "0")
@@ -66,7 +70,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testSwipeGestureDeletingASingleDigit() {
-        let app = XCUIApplication()
+        app.launch()
 
         let displayLabel = helper.outputDisplayLabel
         XCTAssertEqual(displayLabel.label, "0")
@@ -85,7 +89,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testCopyMenuFunctionality() {
-        let app = XCUIApplication()
+        app.launch()
 
         app.buttons["5"].tap()
         helper.outputDisplayLabel.press(forDuration: 1.3)
@@ -97,7 +101,8 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testExchangeRateDisplayLabelAfterConversion() {
-        let app = XCUIApplication()
+        app.launchEnvironment["ConversionSuccess"] = "{\"USD_CAD\":1.339965}"
+        app.launch()
 
         app.buttons["5"].tap()
         app.buttons["1"].tap()
@@ -105,7 +110,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         let exchangeRate = helper.exchangeRateDisplayLabel
         XCTAssertEqual(exchangeRate.label, "0")
 
-        app.buttons["Convert"].tap()
+        helper.convertButton.tap()
 
         XCTAssertTrue(exchangeRate.waitForExistence(timeout: 2.0))
         let outputdisplaylabelButton = helper.outputDisplayLabel
@@ -115,7 +120,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testSwitchConversionButton() {
-        let app = XCUIApplication()
+        app.launch()
 
         let convertToButton = helper.convertToButton
         let convertFromButton = helper.convertFromButton
@@ -131,7 +136,7 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
     }
 
     func testConvertToAndFromButtons() {
-        let app = XCUIApplication()
+        app.launch()
 
         let convertToButton = helper.convertToButton
         let convertFromButton = helper.convertFromButton
@@ -155,5 +160,39 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertTrue(cancelButton.exists)
 
         cancelButton.tap()
+    }
+
+    func testConvertButtonTapSuccess() {
+        app.launchEnvironment["ConversionSuccess"] = "{\"USD_CAD\":1.339965}"
+        app.launch()
+
+        let displayLabel = helper.outputDisplayLabel
+
+        XCTAssertEqual(displayLabel.label, "0")
+
+        app.buttons["5"].tap()
+
+        let convertButton = helper.convertButton
+        convertButton.tap()
+
+        XCTAssertTrue(convertButton.exists)
+        XCTAssertNotEqual(displayLabel.label, "5")
+        XCTAssertNotEqual(displayLabel.label, "0")
+    }
+
+    func testConvertButtonTapFailure() {
+        app.launchEnvironment["ConversionFailure"] = "Error"
+        app.launch()
+
+        app.buttons["5"].tap()
+
+        let convertButton = helper.convertButton
+        convertButton.tap()
+
+        let alert = app.alerts["Error"]
+
+        XCTAssertTrue(alert.waitForExistence(timeout: 2.0))
+        XCTAssertTrue(alert.staticTexts["Error"].exists)
+        XCTAssertTrue(alert.buttons["OK"].exists)
     }
 }
