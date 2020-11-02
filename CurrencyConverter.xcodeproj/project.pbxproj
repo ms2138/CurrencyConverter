@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3CA9550F254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9550E254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift */; };
 		3CA95513254E934800C7D8F8 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA95512254E934800C7D8F8 /* MockURLSessionDataTask.swift */; };
+		3CA9551B254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */; };
+		3CA9551C254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */; };
+		3CA9551D254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */; };
 		3CC427BE251AECD800611294 /* CurrencyDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427BD251AECD800611294 /* CurrencyDataRequest.swift */; };
 		3CC427C0251AEF5200611294 /* CurrencyURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427BF251AEF5200611294 /* CurrencyURL.swift */; };
 		3CC427C2251AFBBB00611294 /* CurrencyDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427C1251AFBBB00611294 /* CurrencyDataController.swift */; };
@@ -82,6 +85,7 @@
 /* Begin PBXFileReference section */
 		3CA9550E254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
 		3CA95512254E934800C7D8F8 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		3CC427BD251AECD800611294 /* CurrencyDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataRequest.swift; sourceTree = "<group>"; };
 		3CC427BF251AEF5200611294 /* CurrencyURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyURL.swift; sourceTree = "<group>"; };
 		3CC427C1251AFBBB00611294 /* CurrencyDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataController.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 			children = (
 				3CC4281625412EC500611294 /* URLSessionProtocol.swift */,
 				3CA9550E254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift */,
+				3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				3CC427D4251C4A6B00611294 /* CurrencyStorageManagerTests.swift in Sources */,
 				3CC427FA252AC47100611294 /* CurrencySelectorViewControllerTests.swift in Sources */,
 				3CC4280F25355B3800611294 /* UserDefaults+EXT.swift in Sources */,
+				3CA9551C254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */,
 				3CC427D6251C4F5700611294 /* CurrencyDataDecoderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,6 +596,7 @@
 				3CA95513254E934800C7D8F8 /* MockURLSessionDataTask.swift in Sources */,
 				3CC427EA251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */,
 				3CC427F42521A08100611294 /* CurrencySelectorViewControllerTests.swift in Sources */,
+				3CA9551D254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */,
 				3CC427EE251D9C4800611294 /* ConvertCurrencyViewControllerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,6 +620,7 @@
 				3CDFD7DD24DF59740015A2CC /* UITableViewCell+EXT.swift in Sources */,
 				3CC4281725412EC500611294 /* URLSessionProtocol.swift in Sources */,
 				844039B024D7B1940073302F /* AppDelegate.swift in Sources */,
+				3CA9551B254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */,
 				3CDFD7C524D92F790015A2CC /* Helpers.swift in Sources */,
 				844039B224D7B1940073302F /* SceneDelegate.swift in Sources */,
 				3CDFD7BF24D91DA90015A2CC /* CustomButton.swift in Sources */,
