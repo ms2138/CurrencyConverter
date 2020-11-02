@@ -8,5 +8,7 @@
 
 import Foundation
 
-class FakeDataTask {
+class FakeDataTask: URLSessionDataTaskProtocol {
+    func cancel() {}
+    func resume() {}
 }
