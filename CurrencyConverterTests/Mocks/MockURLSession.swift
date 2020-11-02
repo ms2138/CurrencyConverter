@@ -21,10 +21,8 @@ class MockURLSession: URLSessionProtocol {
         self.error = error
     }
 
-    func dataTask(
-        with url: URL,
-        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
-    ) -> URLSessionDataTask {
+    func dataTask(with url: URL,
+                  completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         completionHandler(self.data, self.response, self.error)
         return URLSession.shared.dataTask(with: url)
     }
