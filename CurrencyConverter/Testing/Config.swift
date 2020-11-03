@@ -9,4 +9,13 @@
 import Foundation
 
 struct Config {
+    static let urlSession: URLSessionProtocol = isUITesting() ?
+        SeededURLSession() : URLSession.shared
+
+    static let userDefaults: UserDefaultsProtocol = isUITesting() ?
+        FakeUserDefaults() : UserDefaults.standard
+}
+
+private func isUITesting() -> Bool {
+    UserDefaults.standard.bool(forKey: "UITesting")
 }
