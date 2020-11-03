@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3CA9550F254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9550E254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift */; };
-		3CA95513254E934800C7D8F8 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA95512254E934800C7D8F8 /* MockURLSessionDataTask.swift */; };
 		3CA9551B254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */; };
 		3CA9551C254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */; };
 		3CA9551D254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */; };
@@ -88,7 +87,6 @@
 
 /* Begin PBXFileReference section */
 		3CA9550E254E90C400C7D8F8 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
-		3CA95512254E934800C7D8F8 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		3CA9551A254F766F00C7D8F8 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		3CA9551E254FBE5000C7D8F8 /* FakeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserDefaults.swift; sourceTree = "<group>"; };
 		3CA95522254FC41400C7D8F8 /* SeededURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededURLSession.swift; sourceTree = "<group>"; };
@@ -180,14 +178,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3CA95515254E936B00C7D8F8 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				3CA95512254E934800C7D8F8 /* MockURLSessionDataTask.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
 		3CC427CA251C3E2900611294 /* CurrencyConverterTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,7 +197,6 @@
 		3CC427E0251D995100611294 /* CurrencyConverterUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3CA95515254E936B00C7D8F8 /* Mocks */,
 				3CC427E3251D995100611294 /* Info.plist */,
 				3CC427E9251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift */,
 				3CC427F32521A08100611294 /* CurrencySelectorViewControllerTests.swift */,
@@ -605,7 +594,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC427F62521A10200611294 /* CurrencySelectorViewControllerHelper.swift in Sources */,
-				3CA95513254E934800C7D8F8 /* MockURLSessionDataTask.swift in Sources */,
 				3CC427EA251D9B8B00611294 /* ConvertCurrencyViewControllerTests.swift in Sources */,
 				3CC427F42521A08100611294 /* CurrencySelectorViewControllerTests.swift in Sources */,
 				3CA9551D254F766F00C7D8F8 /* UserDefaultsProtocol.swift in Sources */,
