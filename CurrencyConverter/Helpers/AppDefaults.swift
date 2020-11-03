@@ -9,7 +9,7 @@
 import Foundation
 
 class AppDefaults {
-    var defaults: UserDefaults = UserDefaults.standard
+    var defaults: UserDefaultsProtocol = Config.userDefaults
     
     var exchangeRateCache: [String: Double]? {
         get {
