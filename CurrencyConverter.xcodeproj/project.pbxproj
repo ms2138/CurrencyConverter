@@ -15,6 +15,7 @@
 		3CA9551F254FBE5000C7D8F8 /* FakeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9551E254FBE5000C7D8F8 /* FakeUserDefaults.swift */; };
 		3CA95523254FC41400C7D8F8 /* SeededURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA95522254FC41400C7D8F8 /* SeededURLSession.swift */; };
 		3CA95527254FD1BE00C7D8F8 /* FakeDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA95526254FD1BE00C7D8F8 /* FakeDataTask.swift */; };
+		3CA95529255103DB00C7D8F8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA95528255103DB00C7D8F8 /* Config.swift */; };
 		3CC427BE251AECD800611294 /* CurrencyDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427BD251AECD800611294 /* CurrencyDataRequest.swift */; };
 		3CC427C0251AEF5200611294 /* CurrencyURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427BF251AEF5200611294 /* CurrencyURL.swift */; };
 		3CC427C2251AFBBB00611294 /* CurrencyDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC427C1251AFBBB00611294 /* CurrencyDataController.swift */; };
@@ -92,6 +93,7 @@
 		3CA9551E254FBE5000C7D8F8 /* FakeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserDefaults.swift; sourceTree = "<group>"; };
 		3CA95522254FC41400C7D8F8 /* SeededURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededURLSession.swift; sourceTree = "<group>"; };
 		3CA95526254FD1BE00C7D8F8 /* FakeDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataTask.swift; sourceTree = "<group>"; };
+		3CA95528255103DB00C7D8F8 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3CC427BD251AECD800611294 /* CurrencyDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataRequest.swift; sourceTree = "<group>"; };
 		3CC427BF251AEF5200611294 /* CurrencyURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyURL.swift; sourceTree = "<group>"; };
 		3CC427C1251AFBBB00611294 /* CurrencyDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataController.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				3CA9551E254FBE5000C7D8F8 /* FakeUserDefaults.swift */,
 				3CA95522254FC41400C7D8F8 /* SeededURLSession.swift */,
 				3CA95526254FD1BE00C7D8F8 /* FakeDataTask.swift */,
+				3CA95528255103DB00C7D8F8 /* Config.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 			files = (
 				3CDFD7BD24D7F01E0015A2CC /* CurrencyConversion.swift in Sources */,
 				3CDFD7B624D7B7840015A2CC /* Currency.swift in Sources */,
+				3CA95529255103DB00C7D8F8 /* Config.swift in Sources */,
 				3CC427BE251AECD800611294 /* CurrencyDataRequest.swift in Sources */,
 				3CA95523254FC41400C7D8F8 /* SeededURLSession.swift in Sources */,
 				3CDFD7D924DD1EB00015A2CC /* CurrencySelectorViewController.swift in Sources */,
