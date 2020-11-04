@@ -14,6 +14,9 @@ struct Config {
 
     static let userDefaults: UserDefaultsProtocol = isUITesting() ?
         FakeUserDefaults() : UserDefaults.standard
+
+    static let currencies: [Currency] = isUITesting() ?
+        SeededCurrencies().currencies : [Currency]()
 }
 
 private func isUITesting() -> Bool {
