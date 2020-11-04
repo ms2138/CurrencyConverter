@@ -17,6 +17,9 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         let storyboard = UIStoryboard(name: "CurrencySelector", bundle: nil)
         let nc = storyboard.instantiateInitialViewController() as! UINavigationController
         sut = nc.viewControllers[0] as? CurrencySelectorViewController
+        
+        sut.currencies = loadCurrencies()
+
         UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = sut
     }
 
@@ -94,5 +97,13 @@ class CurrencySelectorViewControllerTests: XCTestCase {
         if let title = sut.tableView(fromCurrencyTableView, titleForHeaderInSection: 0) {
             XCTAssertEqual(title, "From")
         }
+    }
+
+    private func loadCurrencies() -> [Currency] {
+        let data = TestHelper().loadData(forResource: "currencies", extension: "json")
+        let currencyDataDecoder = CurrencyDataDecoder(data: data)
+        let currencies = try! currencyDataDecoder.decode(type: CurrencyList.self).currencies
+
+        return currencies
     }
 }
