@@ -121,6 +121,11 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         }
     }
 
+    func testClearButtonExists() {
+        let clearButton = sut.view.viewWithTag(12) as! UIButton
+        XCTAssertNotNil(clearButton)
+    }
+
     func testClearButtonHasAction() {
         if let clearButton = sut.view.viewWithTag(12) as? UIButton {
             guard let clearButtonAction = clearButton.actions(forTarget: sut, forControlEvent: .touchUpInside ) else {
