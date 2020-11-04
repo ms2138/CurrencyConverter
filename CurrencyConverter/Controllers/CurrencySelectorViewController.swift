@@ -9,7 +9,7 @@
 import UIKit
 
 class CurrencySelectorViewController: UIViewController, AlertPresentable, CurrencyDataController {
-    var currencies = [Currency]()
+    var currencies = Config.currencies
     @IBOutlet weak var fromCurrencyTableView: UITableView!
     @IBOutlet weak var toCurrencyTableView: UITableView!
     var previousConversion: CurrencyConversion?
@@ -51,6 +51,8 @@ extension CurrencySelectorViewController {
     // MARK: - Currency setup method
 
     fileprivate func setup() {
+        if (currencies.count != 0) { return }
+
         updateCurrencies(after: TimeInterval(26298000))
         let currencyStorageManager = CurrencyStorageManager(filename: "currencies.json")
 
