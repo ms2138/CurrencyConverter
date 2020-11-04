@@ -10,13 +10,17 @@ import XCTest
 
 class CurrencySelectorViewControllerTests: XCTestCase {
     var helper: CurrencySelectorViewControllerHelper!
+    var app: XCUIApplication!
 
     override func setUp() {
+        app = XCUIApplication()
+        app.launchArguments += ["-UITesting", "true"]
+
         helper = CurrencySelectorViewControllerHelper()
 
         continueAfterFailure = false
 
-        XCUIApplication().launch()
+        app.launch()
     }
 
     override func tearDown() {
@@ -120,7 +124,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testDoneButtonDisabledIfNoCurrencySelectedInFromCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         let tableView = helper.fromTableView
@@ -136,7 +139,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testDoneButtonDisabledIfNoCurrencySelectedInToCurrencyTableView() {
-        let app = XCUIApplication()
         helper.convertFromButton.tap()
 
         let tableView = helper.toTableView
@@ -152,7 +154,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testDoneButton() {
-        let app = XCUIApplication()
         let convertFromButton = helper.convertFromButton
         XCTAssertEqual(convertFromButton.label, "United States Dollar")
 
@@ -174,7 +175,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testCancelButton() {
-        let app = XCUIApplication()
         let convertFromButton = helper.convertFromButton
         XCTAssertEqual(convertFromButton.label, "United States Dollar")
 
@@ -195,7 +195,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testSelectingNewCurrencyFromToCurrencyTableView() {
-        let app = XCUIApplication()
         let convertFromButton = helper.convertFromButton
         XCTAssertEqual(convertFromButton.label, "United States Dollar")
 
@@ -222,7 +221,6 @@ class CurrencySelectorViewControllerTests: XCTestCase {
     }
 
     func testSelectingNewCurrencyFromFromCurrencyTableView() {
-        let app = XCUIApplication()
         let convertFromButton = helper.convertFromButton
         XCTAssertEqual(convertFromButton.label, "United States Dollar")
 
