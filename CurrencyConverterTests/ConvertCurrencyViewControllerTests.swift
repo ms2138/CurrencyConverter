@@ -94,20 +94,6 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertTrue(switchAction.contains("switchConversionDirectionWithSender:"))
     }
 
-    func testSwitchConversionButtonTap() {
-        let switchConversionButton = sut.switchConversionButton!
-        let convertToButton = sut.convertToButton!
-        let convertFromButton = sut.convertFromButton!
-
-        XCTAssertEqual(convertToButton.title(for: .normal), "Canadian Dollar")
-        XCTAssertEqual(convertFromButton.title(for: .normal), "United States Dollar")
-
-        switchConversionButton.sendActions(for: .touchUpInside)
-
-        XCTAssertEqual(convertToButton.title(for: .normal), "United States Dollar")
-        XCTAssertEqual(convertFromButton.title(for: .normal), "Canadian Dollar")
-    }
-
     func testKeyPadButtonsHasActions() {
         for i in 1...11 {
             if let keypadButton = sut.view.viewWithTag(i) as? UIButton {
