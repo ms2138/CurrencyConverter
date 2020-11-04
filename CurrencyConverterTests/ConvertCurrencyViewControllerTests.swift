@@ -51,10 +51,6 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         XCTAssertTrue(convertAction.contains("startConvertingWithSender:"))
     }
 
-    func testConvertToButtonExists() {
-        XCTAssertNotNil(sut.convertToButton)
-    }
-
     func testConvertToButtonSegue() {
         let convertToButton = sut.convertToButton!
 
