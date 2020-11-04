@@ -143,6 +143,8 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         let toCurrency = Currency.init(name: "Canadian Dollar", symbol: "$", id: "CAD")
         let oldConversion = CurrencyConversion.init(from: fromCurrency, to: toCurrency)
 
+        sut.currencyConversion = oldConversion
+
         XCTAssertEqual(sut.currencyConversion, oldConversion)
         XCTAssertEqual(sut.currencyConversion, appDefaults.selectedCurrencyConversion)
 
@@ -150,7 +152,6 @@ class ConvertCurrencyViewControllerTests: XCTestCase {
         let newConversion = CurrencyConversion.init(from: newFromCurrency, to: toCurrency)
 
         sut.currencyConversion = newConversion
-        appDefaults.selectedCurrencyConversion = newConversion
 
         XCTAssertEqual(sut.currencyConversion, newConversion)
         XCTAssertEqual(sut.currencyConversion, appDefaults.selectedCurrencyConversion)
